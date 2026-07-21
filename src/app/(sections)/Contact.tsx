@@ -487,6 +487,7 @@ STATUS: UPLINKED SECURELY
 
   return (
     <section id="contact" ref={containerRef} className="w-full py-24 px-4 md:px-8 lg:px-12 bg-[#05040d] relative overflow-hidden flex flex-col items-center select-none">
+      <div id="collaborations" />
       
       {/* Dynamic Background Grid overlay */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:32px_32px] opacity-35 pointer-events-none" />

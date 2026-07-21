@@ -90,7 +90,7 @@ export default function HudChrome() {
         {/* Logo / Brand */}
         <div className="pointer-events-auto flex items-center gap-3 bg-void/60 backdrop-blur-md border border-signal/15 px-4 py-2 rounded-sm shadow-sm glass-panel-glow">
           <span className="font-mono text-xs font-bold text-ink tracking-widest">
-            SHANEX <span className="text-signal">//</span> SIGNAL_DECK
+            SHAWAZ <span className="text-signal">//</span> PORTFOLIO
           </span>
         </div>
 

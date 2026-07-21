@@ -3,7 +3,7 @@ import "./globals.css";
 import SmoothScrollProvider from "@/app/providers/SmoothScroll";
 
 export const metadata: Metadata = {
-  title: "SHANEX // PORTFOLIO",
+  title: "SHAWAZ PORTFOLIO",
   description: "Futuristic developer console & interactive signal deck portfolio. Engineered with Next.js, GSAP, and Framer Motion.",
 };
 

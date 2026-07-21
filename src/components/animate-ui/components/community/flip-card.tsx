@@ -315,7 +315,7 @@ export const FlipCard: React.FC<FlipCardProps> = ({ data }) => {
     };
   }, [isFlipped]);
 
-  const executeCommand = async (cmdKey: 'scrollHero' | 'scrollAbout' | 'scrollTech' | 'scrollProjects' | 'scrollCertificates' | 'scrollContact') => {
+  const executeCommand = async (cmdKey: 'scrollHero' | 'scrollAbout' | 'scrollTech' | 'scrollProjects' | 'scrollCertificates' | 'scrollCollaborations') => {
     if (isTyping || typingRef.current) return;
     typingRef.current = true;
     setIsTyping(true);
@@ -349,7 +349,7 @@ export const FlipCard: React.FC<FlipCardProps> = ({ data }) => {
       return rect.top + scrollTop;
     };
 
-    const commands: Record<'scrollHero' | 'scrollAbout' | 'scrollTech' | 'scrollProjects' | 'scrollCertificates' | 'scrollContact', CommandItem> = {
+    const commands: Record<'scrollHero' | 'scrollAbout' | 'scrollTech' | 'scrollProjects' | 'scrollCertificates' | 'scrollCollaborations', CommandItem> = {
       scrollHero: {
         cmd: "scroll --hero",
         output: [
@@ -416,14 +416,14 @@ export const FlipCard: React.FC<FlipCardProps> = ({ data }) => {
           }
         }
       },
-      scrollContact: {
-        cmd: "scroll --contact",
+      scrollCollaborations: {
+        cmd: "scroll --collaborations",
         output: [
-          "[SYSTEM_REDIRECT] Locating Contact section...",
+          "[SYSTEM_REDIRECT] Locating Collaborations section...",
           "Initiating viewport scrolling override..."
         ],
         action: () => {
-          const targetY = getElementY("contact");
+          const targetY = getElementY("contact") ?? getElementY("collaborations");
           if (targetY !== null) {
             gsapScrollTo(targetY - 20);
           } else {
@@ -754,11 +754,11 @@ export const FlipCard: React.FC<FlipCardProps> = ({ data }) => {
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                executeCommand('scrollContact');
+                executeCommand('scrollCollaborations');
               }}
               className="bg-green-950/20 hover:bg-green-950/40 border border-green-500/30 hover:border-green-500/60 text-green-400 text-[10px] sm:text-xs px-2.5 py-1.5 rounded-md font-mono transition-all duration-200 shadow-sm shadow-green-500/5 cursor-pointer uppercase tracking-wider"
             >
-              scroll --contact
+              scroll --collaborations
             </button>
           </div>
         </div>
