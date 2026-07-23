@@ -164,74 +164,89 @@ export default function Hero() {
       </div>
 
       {/* HUD Controls — bottom right */}
-      <div className="absolute bottom-8 right-8 z-40 flex items-center gap-2">
+      <div className="absolute bottom-8 right-8 z-40 flex items-center gap-2.5">
         <button
           onClick={toggleMute}
-          className="font-mono text-[9px] text-ink hover:text-signal border border-signal/25 hover:border-signal bg-void/80 hover:bg-signal/10 backdrop-blur-md px-3 py-2 rounded-sm transition-all duration-200 flex items-center gap-1.5 cursor-pointer shadow-lg active:scale-95"
+          className="group relative overflow-hidden cursor-pointer flex items-center gap-2 px-3.5 py-2 rounded-full border border-slate-800 border-t-white/20 bg-[#090a0f]/80 hover:bg-slate-900/90 hover:border-slate-600 backdrop-blur-md transition-all duration-300 shadow-[inset_0_1px_1px_rgba(255,255,255,0.15),0_10px_20px_rgba(0,0,0,0.5)] active:scale-95 select-none"
           title={isMuted ? "Unmute Audio" : "Mute Audio"}
           aria-label={isMuted ? "Unmute Audio" : "Mute Audio"}
         >
+          {/* Glass Top Reflection Layer */}
+          <div className="absolute inset-x-0 top-0 h-[45%] bg-gradient-to-b from-white/15 to-transparent pointer-events-none rounded-t-full" />
+
+          {/* Animated Light Sheen Glare */}
+          <div className="absolute inset-0 w-full h-full -skew-x-12 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 ease-out pointer-events-none" />
+
           {isMuted ? (
             <>
-              <VolumeX size={11} className="text-dim" />
-              <span>AUDIO_OFF</span>
+              <VolumeX size={13} className="text-slate-400 group-hover:text-slate-200 transition-colors z-10" />
+              <span className="font-frozen font-bold text-xs tracking-wider text-slate-200 group-hover:text-white uppercase transition-colors z-10">AUDIO OFF</span>
             </>
           ) : (
             <>
-              <Volume2 size={11} className="text-pulse animate-pulse" />
-              <span className="text-pulse font-medium">AUDIO_ON</span>
+              <Volume2 size={13} className="text-slate-200 group-hover:text-white animate-pulse z-10" />
+              <span className="font-frozen font-bold text-xs tracking-wider text-slate-200 group-hover:text-white uppercase transition-colors z-10">AUDIO ON</span>
             </>
           )}
         </button>
 
         <button
           onClick={handleReplay}
-          className="font-mono text-[9px] text-ink hover:text-signal border border-signal/25 hover:border-signal bg-void/80 hover:bg-signal/10 backdrop-blur-md px-3 py-2 rounded-sm transition-all duration-200 flex items-center gap-1.5 cursor-pointer shadow-lg active:scale-95"
+          className="group relative overflow-hidden cursor-pointer flex items-center gap-2 px-3.5 py-2 rounded-full border border-slate-800 border-t-white/20 bg-[#090a0f]/80 hover:bg-slate-900/90 hover:border-slate-600 backdrop-blur-md transition-all duration-300 shadow-[inset_0_1px_1px_rgba(255,255,255,0.15),0_10px_20px_rgba(0,0,0,0.5)] active:scale-95 select-none"
           title="Replay Video"
           aria-label="Replay Intro Video"
         >
-          <RotateCcw size={11} />
-          <span>REPLAY</span>
+          {/* Glass Top Reflection Layer */}
+          <div className="absolute inset-x-0 top-0 h-[45%] bg-gradient-to-b from-white/15 to-transparent pointer-events-none rounded-t-full" />
+
+          {/* Animated Light Sheen Glare */}
+          <div className="absolute inset-0 w-full h-full -skew-x-12 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 ease-out pointer-events-none" />
+
+          <RotateCcw size={13} className="text-slate-400 group-hover:text-slate-200 transition-colors group-hover:-rotate-90 duration-300 z-10" />
+          <span className="font-frozen font-bold text-xs tracking-wider text-slate-200 group-hover:text-white uppercase transition-colors z-10">REPLAY</span>
         </button>
       </div>
 
-      {/* Concept 1: The Telemetry Scroll Wheel (Refined Visibility & Design) ─ bottom center */}
+      {/* Console Terminal Pill (HUD Status Indicator) ─ bottom center */}
       <div className="absolute bottom-8 left-0 w-full flex justify-center z-30 pointer-events-none">
         <button
           onClick={scrollToNext}
-          className="group pointer-events-auto cursor-pointer flex flex-col items-center gap-2.5 relative select-none"
+          className="group pointer-events-auto relative overflow-hidden cursor-pointer flex items-center gap-3 px-4 py-2 rounded-full border border-slate-800 border-t-white/20 bg-[#090a0f]/80 hover:bg-slate-900/90 hover:border-slate-600 backdrop-blur-md transition-all duration-300 shadow-[inset_0_1px_1px_rgba(255,255,255,0.15),0_10px_20px_rgba(0,0,0,0.5)] active:scale-95 select-none"
           aria-label="Scroll to next section"
         >
-          {/* Sonar Ripple Ring (active on hover) */}
-          <div className="absolute top-0 w-8 h-12 rounded-full border border-signal/0 group-hover:border-signal/30 pointer-events-none scale-100 group-hover:scale-130 opacity-0 group-hover:opacity-100 transition-all duration-700 ease-out" />
-          
-          {/* Mouse Wireframe Body */}
-          <div className="w-8 h-12 rounded-full border-2 border-signal/40 group-hover:border-pulse bg-void/50 backdrop-blur-sm relative transition-all duration-300 ease-out p-1.5 flex flex-col items-center justify-start shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
-            {/* Pulsing & Scrolling Cyan Dot */}
+          {/* Glass Top Reflection Layer */}
+          <div className="absolute inset-x-0 top-0 h-[45%] bg-gradient-to-b from-white/15 to-transparent pointer-events-none rounded-t-full" />
+
+          {/* Animated Light Sheen Glare */}
+          <div className="absolute inset-0 w-full h-full -skew-x-12 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 ease-out pointer-events-none" />
+
+          {/* Micro Track with sliding metallic dot */}
+          <div className="w-4 h-7 rounded-full border border-slate-700/80 group-hover:border-slate-400 p-0.5 flex flex-col items-center justify-start relative overflow-hidden transition-colors duration-300 z-10">
             <motion.div
               animate={{
-                y: [0, 14, 0],
-                opacity: [0.3, 1, 0.3]
+                y: [0, 10, 0],
+                opacity: [0.4, 1, 0.4]
               }}
               transition={{
                 repeat: Infinity,
                 duration: 1.6,
                 ease: "easeInOut"
               }}
-              className="w-1.5 h-2.5 rounded-full bg-pulse shadow-[0_0_8px_rgba(63,224,197,0.8)]"
+              className="w-1.5 h-1.5 rounded-full bg-slate-200"
             />
-            {/* Bouncing down-arrow chevron for scroll cue */}
-            <div className="absolute bottom-1.5 text-dim/60 group-hover:text-pulse transition-colors duration-300">
-              <svg className="w-2.5 h-2.5 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-              </svg>
-            </div>
           </div>
 
-          {/* Telemetry Label */}
-          <span className="font-mono text-[9px] font-bold text-dim group-hover:text-pulse tracking-[0.3em] uppercase drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] transition-colors duration-300">
-            SCROLL DOWN
-          </span>
+          {/* Frozen Font label & vector indicator */}
+          <div className="flex items-center gap-2.5 font-frozen font-bold text-xs sm:text-sm tracking-wider text-slate-200 group-hover:text-white uppercase transition-colors duration-300 z-10">
+            <span>SCROLL DOWN</span>
+            <motion.span
+              animate={{ y: [0, 3, 0] }}
+              transition={{ repeat: Infinity, duration: 1.4, ease: "easeInOut" }}
+              className="text-slate-200 group-hover:text-white text-sm font-bold"
+            >
+              ↓
+            </motion.span>
+          </div>
         </button>
       </div>
     </section>

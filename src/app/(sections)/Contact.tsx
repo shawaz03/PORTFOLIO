@@ -574,7 +574,7 @@ STATUS: UPLINKED SECURELY
               {/* Sci-Fi Power Level Budget Slider */}
               <div className="flex flex-col gap-3">
                 <div className="flex items-center justify-between">
-                  <label className="font-disney text-base md:text-lg text-signal font-bold tracking-wider drop-shadow-[0_0_8px_rgba(110,92,255,0.3)]">
+                  <label htmlFor="budget-range" className="font-disney text-base md:text-lg text-signal font-bold tracking-wider drop-shadow-[0_0_8px_rgba(110,92,255,0.3)] cursor-pointer">
                     <span>2. Budget Estimation</span>
                   </label>
                   <span 
@@ -589,6 +589,8 @@ STATUS: UPLINKED SECURELY
                 </div>
                 <div className="relative mt-2 flex items-center">
                   <input
+                    id="budget-range"
+                    aria-label="Budget Estimation"
                     type="range"
                     min="5"
                     max="100"
