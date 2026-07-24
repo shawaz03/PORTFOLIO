@@ -55,10 +55,10 @@ export default function PageLoader({ onComplete }: { onComplete?: () => void }) 
               transition={{ duration: 0.5 }}
               className="text-center"
             >
-              <h1 className="font-italico text-3xl sm:text-4xl md:text-5xl font-black tracking-wider text-slate-100 uppercase">
+              <h1 className="font-mermaid text-3xl sm:text-4xl md:text-5xl font-bold tracking-wider text-slate-100 uppercase">
                 SHAWAZ
               </h1>
-              <p className="font-mono text-xs text-slate-400 tracking-[0.3em] uppercase mt-2">
+              <p className="font-frozen text-xs sm:text-sm font-bold text-slate-400 tracking-[0.3em] uppercase mt-2">
                 FULL-STACK DEVELOPER
               </p>
             </motion.div>
