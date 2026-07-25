@@ -69,6 +69,9 @@ export const metadata: Metadata = {
     creator: "@__iamsha_",
     images: ["/profile-circle.png"],
   },
+  verification: {
+    google: "google48456b389b98d05b",
+  },
   icons: {
     icon: "/icon.png",
     shortcut: "/icon.png",
