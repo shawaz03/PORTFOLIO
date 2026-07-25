@@ -3,7 +3,7 @@ import "./globals.css";
 import SmoothScrollProvider from "@/app/providers/SmoothScroll";
 import ScrollProgress from "@/components/ui/ScrollProgress";
 
-const SITE_URL = "https://shawaz-portfolio.vercel.app";
+const SITE_URL = "https://shawaz.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
