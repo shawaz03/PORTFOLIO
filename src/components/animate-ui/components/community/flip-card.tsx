@@ -498,7 +498,7 @@ export const FlipCard: React.FC<FlipCardProps> = ({ data }) => {
 
   return (
     <div 
-      className="w-full max-w-[480px] h-[600px] cursor-pointer relative overflow-visible"
+      className="w-full max-w-[340px] xs:max-w-[400px] sm:max-w-[480px] h-[540px] sm:h-[600px] cursor-pointer relative overflow-visible mx-auto"
       onClick={() => {
         if (!isTyping) {
           setIsFlipped(!isFlipped);
@@ -540,7 +540,7 @@ export const FlipCard: React.FC<FlipCardProps> = ({ data }) => {
       >
         {/* FRONT SIDE */}
         <div 
-          className="absolute inset-0 w-full h-full rounded-2xl p-8 flex flex-col items-center justify-between shadow-[0_25px_60px_rgba(0,0,0,0.9)] border border-white/10 glass-shiny-card"
+          className="absolute inset-0 w-full h-full rounded-2xl p-5 sm:p-8 flex flex-col items-center justify-between shadow-[0_25px_60px_rgba(0,0,0,0.9)] border border-white/10 glass-shiny-card"
           style={{ 
             backfaceVisibility: "hidden",
             WebkitBackfaceVisibility: "hidden",
@@ -552,7 +552,7 @@ export const FlipCard: React.FC<FlipCardProps> = ({ data }) => {
           <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-transparent via-white/[0.02] to-white/[0.07] pointer-events-none" />
 
           {/* Corner Brackets */}
-          <div className="absolute inset-5 pointer-events-none select-none">
+          <div className="absolute inset-3 sm:inset-5 pointer-events-none select-none">
             <div className="absolute top-0 left-0 w-3.5 h-3.5 border-t-2 border-l-2 border-signal/45" />
             <div className="absolute top-0 right-0 w-3.5 h-3.5 border-t-2 border-r-2 border-signal/45" />
             <div className="absolute bottom-0 left-0 w-3.5 h-3.5 border-b-2 border-l-2 border-signal/45" />
@@ -560,8 +560,8 @@ export const FlipCard: React.FC<FlipCardProps> = ({ data }) => {
           </div>
 
           {/* Enlarged Avatar Top Area */}
-          <div className="w-full flex justify-center mt-6">
-            <div className="w-60 h-60 sm:w-64 sm:h-64 rounded-full border-2 border-signal/50 p-2.5 bg-void/60 shadow-[0_0_30px_rgba(110,92,255,0.25)] relative overflow-hidden transition-all duration-300">
+          <div className="w-full flex justify-center mt-3 sm:mt-6">
+            <div className="w-44 h-44 xs:w-52 xs:h-52 sm:w-64 sm:h-64 rounded-full border-2 border-signal/50 p-2 sm:p-2.5 bg-void/60 shadow-[0_0_30px_rgba(110,92,255,0.25)] relative overflow-hidden transition-all duration-300">
               <div className="w-full h-full rounded-full overflow-hidden relative">
                 <Image 
                   src={data.image} 
@@ -576,22 +576,22 @@ export const FlipCard: React.FC<FlipCardProps> = ({ data }) => {
           </div>
 
           {/* Name & Actions pushed to the bottom area */}
-          <div className="w-full flex flex-col items-center gap-4 mt-auto mb-6">
+          <div className="w-full flex flex-col items-center gap-3 sm:gap-4 mt-auto mb-3 sm:mb-6">
             <div className="text-center flex flex-col items-center gap-1.5 w-full">
-              <h3 className="font-frozen font-bold text-3xl sm:text-4xl text-ink uppercase tracking-wider drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
+              <h3 className="font-frozen font-bold text-2xl sm:text-4xl text-ink uppercase tracking-wider drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
                 {data.name}
               </h3>
             </div>
 
-            {/* Download Resume Button (Little Mermaid / Bold font) */}
-            <div className="w-full px-2">
+            {/* Download Resume Button */}
+            <div className="w-full px-1 sm:px-2">
               <a
                 href="/resume.pdf"
                 download="J_Shawaz_Resume.pdf"
                 onClick={(e) => e.stopPropagation()} // Prevent card flip
-                className="flex items-center justify-center gap-3 w-full bg-signal/15 hover:bg-signal/25 border border-signal/30 hover:border-signal/50 text-ink rounded-xl py-2.5 px-4 font-mermaid font-bold text-[20px] tracking-wide transition-all duration-300 shadow-md hover:shadow-[0_0_15px_rgba(110,92,255,0.2)]"
+                className="flex items-center justify-center gap-2 sm:gap-3 w-full bg-signal/15 hover:bg-signal/25 border border-signal/30 hover:border-signal/50 text-ink rounded-xl py-2 sm:py-2.5 px-3 sm:px-4 font-mermaid font-bold text-[16px] sm:text-[20px] tracking-wide transition-all duration-300 shadow-md hover:shadow-[0_0_15px_rgba(110,92,255,0.2)]"
               >
-                <PDFIcon className="w-4.5 h-4.5 text-[#ff2116]" />
+                <PDFIcon className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-[#ff2116]" />
                 <span>Download Resume</span>
               </a>
             </div>

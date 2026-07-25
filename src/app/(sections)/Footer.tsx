@@ -62,7 +62,7 @@ export default function Footer() {
         
         {/* Base Layer: Delicate hollow wireframe outline */}
         <div 
-          className="flex items-center justify-center font-frozen tracking-widest text-center uppercase pointer-events-none select-none text-[7.5vw] whitespace-nowrap leading-none w-full"
+          className="flex items-center justify-center font-frozen tracking-widest text-center uppercase pointer-events-none select-none text-[8.5vw] sm:text-[7.5vw] whitespace-nowrap leading-none w-full"
           style={{
             WebkitTextStroke: "1px rgba(255, 255, 255, 0.05)",
             color: "transparent",
@@ -75,7 +75,7 @@ export default function Footer() {
         
         {/* 1. Cyan offset reveal */}
         <motion.div
-          className="absolute inset-0 flex items-center justify-center font-frozen tracking-widest text-center uppercase pointer-events-none select-none text-[7.5vw] whitespace-nowrap leading-none w-full text-[#3FE0C5] mix-blend-screen translate-x-[2px] translate-y-[-1px]"
+          className="absolute inset-0 flex items-center justify-center font-frozen tracking-widest text-center uppercase pointer-events-none select-none text-[8.5vw] sm:text-[7.5vw] whitespace-nowrap leading-none w-full text-[#3FE0C5] mix-blend-screen translate-x-[2px] translate-y-[-1px]"
           style={maskStyle}
         >
           ENGINEERED BY <span className="text-[#3FE0C5]">SHAWAZ</span>
@@ -83,7 +83,7 @@ export default function Footer() {
 
         {/* 2. Orange offset reveal */}
         <motion.div
-          className="absolute inset-0 flex items-center justify-center font-frozen tracking-widest text-center uppercase pointer-events-none select-none text-[7.5vw] whitespace-nowrap leading-none w-full text-[#FF7A45] mix-blend-screen translate-x-[-2px] translate-y-[1px]"
+          className="absolute inset-0 flex items-center justify-center font-frozen tracking-widest text-center uppercase pointer-events-none select-none text-[8.5vw] sm:text-[7.5vw] whitespace-nowrap leading-none w-full text-[#FF7A45] mix-blend-screen translate-x-[-2px] translate-y-[1px]"
           style={maskStyle}
         >
           ENGINEERED BY <span className="text-[#FF7A45]">SHAWAZ</span>
@@ -91,7 +91,7 @@ export default function Footer() {
 
         {/* 3. Primary White reveal with custom outer glows and frozen ice blue name override */}
         <motion.div
-          className="absolute inset-0 flex items-center justify-center font-frozen tracking-widest text-center uppercase pointer-events-none select-none text-[7.5vw] whitespace-nowrap leading-none w-full text-white mix-blend-screen"
+          className="absolute inset-0 flex items-center justify-center font-frozen tracking-widest text-center uppercase pointer-events-none select-none text-[8.5vw] sm:text-[7.5vw] whitespace-nowrap leading-none w-full text-white mix-blend-screen"
           style={{
             ...maskStyle,
             textShadow: "0 0 25px rgba(255, 255, 255, 0.8), 0 0 45px rgba(110, 92, 255, 0.5)",

@@ -78,7 +78,7 @@ export default function About() {
                 "UI/UX DESIGNER",
                 "CREATIVE CODER"
               ]}
-              mainClassName="font-black w-[280px] sm:w-[380px] md:w-[480px] lg:w-[620px] text-left justify-start inline-flex items-center"
+              mainClassName="font-black w-[230px] xs:w-[310px] sm:w-[380px] md:w-[480px] lg:w-[620px] text-left justify-start inline-flex items-center"
               elementLevelClassName="chrome-cyan"
               staggerFrom="first"
               initial={{ y: "100%", opacity: 0 }}

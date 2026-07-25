@@ -850,7 +850,7 @@ export default function Certificates() {
           ))}
         </div>
 
-        {/* Inward-Curved 3D Viewport Marquee Container (Increased container height to 540px, with drag-to-scroll support) */}
+        {/* Inward-Curved 3D Viewport Marquee Container */}
         <div 
           ref={containerRef}
           onMouseEnter={() => { isHovered.current = true; }}
@@ -858,7 +858,7 @@ export default function Certificates() {
           onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMoveDrag}
           onMouseUp={handleMouseUp}
-          className="w-full h-[540px] relative overflow-hidden flex items-center justify-center mt-8 cursor-grab active:cursor-grabbing select-none"
+          className="w-full h-[460px] sm:h-[540px] relative overflow-hidden flex items-center justify-center mt-6 sm:mt-8 cursor-grab active:cursor-grabbing select-none"
           style={{ perspective: 900, transformStyle: "preserve-3d" }}
         >
           {filteredCerts.map((cert) => {
@@ -869,7 +869,7 @@ export default function Certificates() {
                 onClick={() => handleCardClick(cert)}
                 onMouseMove={(e) => handleMouseMove(e, cert.id)}
                 onMouseLeave={handleMouseLeave}
-                className="cert-card-wrapper absolute top-1/2 -translate-y-1/2 w-[320px] h-[430px] cursor-pointer group"
+                className="cert-card-wrapper absolute top-1/2 -translate-y-1/2 w-[270px] xs:w-[300px] sm:w-[320px] h-[380px] sm:h-[430px] cursor-pointer group"
                 style={{ transformStyle: "preserve-3d" }}
               >
                 {/* Branded Backlight Aura Glow */}

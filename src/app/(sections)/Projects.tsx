@@ -190,16 +190,16 @@ export default function Projects() {
         {/* Split Grid Layout: Left Carousel (span 8) | Right Details (span 4) */}
         <div className="grid grid-cols-1 xl:grid-cols-12 gap-10 mt-6 items-center">
           
-          {/* LEFT: 3D Carousel Stage (Shifted slightly left with xl:translate-x-[-20px]) */}
-          <div className="xl:col-span-8 flex items-center justify-center gap-4 relative w-full xl:translate-x-[-20px] z-20">
+          {/* LEFT: 3D Carousel Stage */}
+          <div className="xl:col-span-8 flex items-center justify-center gap-2 sm:gap-4 relative w-full xl:translate-x-[-20px] z-20">
             
-            {/* Left arrow controls - Highlighted with group hover transition (No neon glow) */}
+            {/* Left arrow controls */}
             <button 
               onClick={() => spinCarousel("prev")}
-              className="group flex items-center justify-center w-12 h-12 rounded-full border border-white/10 hover:border-signal/50 bg-[#14121F]/80 hover:bg-[#1C1A2E] text-dim hover:text-ink cursor-pointer transition-all duration-300 z-30 shrink-0"
+              className="group flex items-center justify-center w-8 h-8 sm:w-12 sm:h-12 rounded-full border border-white/10 hover:border-signal/50 bg-[#14121F]/80 hover:bg-[#1C1A2E] text-dim hover:text-ink cursor-pointer transition-all duration-300 z-30 shrink-0"
               aria-label="Previous project"
             >
-              <ChevronLeft className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-[-4px]" />
+              <ChevronLeft className="w-4 h-4 sm:w-6 sm:h-6 transition-transform duration-300 group-hover:translate-x-[-4px]" />
             </button>
 
             {/* Perspective Viewport Container */}
@@ -208,7 +208,7 @@ export default function Projects() {
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
               onDoubleClick={handleDoubleClick}
-              className="w-full max-w-[760px] h-[520px] relative cursor-pointer select-none"
+              className="w-full max-w-[760px] h-[340px] xs:h-[400px] sm:h-[480px] md:h-[520px] relative cursor-pointer select-none"
               style={{ perspective: 2000 }}
             >
               {/* Specular cursor glow */}
@@ -369,13 +369,13 @@ export default function Projects() {
               </div>
             </div>
 
-            {/* Right arrow controls - Highlighted with group hover transition (No neon glow) */}
+            {/* Right arrow controls */}
             <button 
               onClick={() => spinCarousel("next")}
-              className="group flex items-center justify-center w-12 h-12 rounded-full border border-white/10 hover:border-signal/50 bg-[#14121F]/80 hover:bg-[#1C1A2E] text-dim hover:text-ink cursor-pointer transition-all duration-300 z-30 shrink-0"
+              className="group flex items-center justify-center w-8 h-8 sm:w-12 sm:h-12 rounded-full border border-white/10 hover:border-signal/50 bg-[#14121F]/80 hover:bg-[#1C1A2E] text-dim hover:text-ink cursor-pointer transition-all duration-300 z-30 shrink-0"
               aria-label="Next project"
             >
-              <ChevronRight className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-[4px]" />
+              <ChevronRight className="w-4 h-4 sm:w-6 sm:h-6 transition-transform duration-300 group-hover:translate-x-[4px]" />
             </button>
           </div>
 

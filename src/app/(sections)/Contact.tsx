@@ -523,15 +523,15 @@ STATUS: UPLINKED SECURELY
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch relative">
           
           {/* LEFT SIDE: Dynamic CTA Questionnaire */}
-          <div className="lg:col-span-5 flex flex-col justify-between border border-white/20 bg-deck/85 backdrop-blur-md rounded-2xl p-6 md:p-8 relative overflow-hidden group/card">
-            
+          <div className="lg:col-span-5 flex flex-col justify-between border border-white/20 bg-deck/85 backdrop-blur-md rounded-2xl p-5 md:p-8 relative overflow-hidden group/card">
+
             {/* Ambient card hover light */}
             <div className="absolute -inset-[500px] rounded-full bg-gradient-to-tr from-signal/15 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
             <div className="flex flex-col gap-8 z-10 text-left">
               <div>
                 <span className="font-mono text-[10px] text-ink/85 font-semibold tracking-[0.25em] uppercase">STEP_01 / SPECIFY_PROJECT</span>
-                <h3 className="font-hocus font-bold text-[28px] md:text-3xl text-ink uppercase tracking-wide mt-1.5 drop-shadow-[0_0_12px_rgba(110,92,255,0.35)]">
+                <h3 className="font-hocus font-bold text-[24px] xs:text-[28px] md:text-3xl text-ink uppercase tracking-wide mt-1.5 drop-shadow-[0_0_12px_rgba(110,92,255,0.35)]">
                   CONFIGURING THE SCOPE
                 </h3>
               </div>
@@ -910,7 +910,7 @@ STATUS: UPLINKED SECURELY
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Enter your name"
-                    className="w-full bg-[#07060c] border border-white/10 rounded-xl px-4 py-3 font-mermaid text-[15px] text-white placeholder-white/35 focus:border-pulse focus:ring-1 focus:ring-pulse/30 focus:outline-none transition-all duration-300 shadow-inner"
+                    className="w-full bg-[#07060c] border border-white/10 rounded-xl px-4 py-3 font-mermaid text-base md:text-[15px] text-white placeholder-white/35 focus:border-pulse focus:ring-1 focus:ring-pulse/30 focus:outline-none transition-all duration-300 shadow-inner"
                   />
                 </div>
 
@@ -926,7 +926,7 @@ STATUS: UPLINKED SECURELY
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="name@company.com"
-                    className="w-full bg-[#07060c] border border-white/10 rounded-xl px-4 py-3 font-mermaid text-[15px] text-white placeholder-white/35 focus:border-signal focus:ring-1 focus:ring-signal/30 focus:outline-none transition-all duration-300 shadow-inner"
+                    className="w-full bg-[#07060c] border border-white/10 rounded-xl px-4 py-3 font-mermaid text-base md:text-[15px] text-white placeholder-white/35 focus:border-signal focus:ring-1 focus:ring-signal/30 focus:outline-none transition-all duration-300 shadow-inner"
                   />
                 </div>
 
@@ -941,7 +941,7 @@ STATUS: UPLINKED SECURELY
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     placeholder="Describe your project goals, timelines, or just say hello..."
-                    className="w-full bg-[#07060c] border border-white/10 rounded-xl px-4 py-3 font-mermaid text-[15px] text-white placeholder-white/35 focus:border-flare focus:ring-1 focus:ring-flare/30 focus:outline-none transition-all duration-300 resize-none shadow-inner"
+                    className="w-full bg-[#07060c] border border-white/10 rounded-xl px-4 py-3 font-mermaid text-base md:text-[15px] text-white placeholder-white/35 focus:border-flare focus:ring-1 focus:ring-flare/30 focus:outline-none transition-all duration-300 resize-none shadow-inner"
                   />
                 </div>
 

@@ -113,7 +113,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="h-screen w-full relative bg-void overflow-hidden">
+    <section className="h-[100dvh] min-h-screen w-full relative bg-void overflow-hidden">
       {/* Loader Overlay (runs until 100% and then transitions out) */}
       <AnimatePresence>
         {!loaderComplete && (
@@ -144,7 +144,7 @@ export default function Hero() {
       <div className="absolute inset-0 z-15 pointer-events-none bg-gradient-to-t from-void/90 via-void/20 to-transparent" />
 
       {/* Professional Styled Captions (Aligned above the scroll button) */}
-      <div className="absolute bottom-28 left-0 w-full flex justify-center z-30 pointer-events-none px-6">
+      <div className="absolute bottom-20 sm:bottom-28 left-0 w-full flex justify-center z-30 pointer-events-none px-4 sm:px-6">
         <AnimatePresence mode="wait">
           {loaderComplete && activeCaptionIndex !== null && (
             <motion.div
@@ -155,7 +155,7 @@ export default function Hero() {
               transition={{ duration: 0.35, ease: "easeOut" }}
               className="max-w-4xl w-full text-center"
             >
-              <h2 className="font-italico text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold uppercase tracking-wide leading-tight select-none">
+              <h2 className="font-italico text-xl xs:text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold uppercase tracking-wide leading-tight select-none">
                 {captions[activeCaptionIndex].render()}
               </h2>
             </motion.div>
@@ -164,10 +164,10 @@ export default function Hero() {
       </div>
 
       {/* HUD Controls — bottom right */}
-      <div className="absolute bottom-8 right-8 z-40 flex items-center gap-2.5">
+      <div className="absolute bottom-4 right-4 sm:bottom-8 sm:right-8 z-40 flex items-center gap-2 sm:gap-2.5">
         <button
           onClick={toggleMute}
-          className="group relative overflow-hidden cursor-pointer flex items-center gap-2 px-3.5 py-2 rounded-full border border-slate-800 border-t-white/20 bg-[#090a0f]/80 hover:bg-slate-900/90 hover:border-slate-600 backdrop-blur-md transition-all duration-300 shadow-[inset_0_1px_1px_rgba(255,255,255,0.15),0_10px_20px_rgba(0,0,0,0.5)] active:scale-95 select-none"
+          className="group relative overflow-hidden cursor-pointer flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-full border border-slate-800 border-t-white/20 bg-[#090a0f]/80 hover:bg-slate-900/90 hover:border-slate-600 backdrop-blur-md transition-all duration-300 shadow-[inset_0_1px_1px_rgba(255,255,255,0.15),0_10px_20px_rgba(0,0,0,0.5)] active:scale-95 select-none"
           title={isMuted ? "Unmute Audio" : "Mute Audio"}
           aria-label={isMuted ? "Unmute Audio" : "Mute Audio"}
         >
@@ -179,20 +179,20 @@ export default function Hero() {
 
           {isMuted ? (
             <>
-              <VolumeX size={13} className="text-slate-400 group-hover:text-slate-200 transition-colors z-10" />
-              <span className="font-frozen font-bold text-xs tracking-wider text-slate-200 group-hover:text-white uppercase transition-colors z-10">AUDIO OFF</span>
+              <VolumeX size={12} className="text-slate-400 group-hover:text-slate-200 transition-colors z-10" />
+              <span className="font-frozen font-bold text-[10px] sm:text-xs tracking-wider text-slate-200 group-hover:text-white uppercase transition-colors z-10">AUDIO OFF</span>
             </>
           ) : (
             <>
-              <Volume2 size={13} className="text-slate-200 group-hover:text-white animate-pulse z-10" />
-              <span className="font-frozen font-bold text-xs tracking-wider text-slate-200 group-hover:text-white uppercase transition-colors z-10">AUDIO ON</span>
+              <Volume2 size={12} className="text-slate-200 group-hover:text-white animate-pulse z-10" />
+              <span className="font-frozen font-bold text-[10px] sm:text-xs tracking-wider text-slate-200 group-hover:text-white uppercase transition-colors z-10">AUDIO ON</span>
             </>
           )}
         </button>
 
         <button
           onClick={handleReplay}
-          className="group relative overflow-hidden cursor-pointer flex items-center gap-2 px-3.5 py-2 rounded-full border border-slate-800 border-t-white/20 bg-[#090a0f]/80 hover:bg-slate-900/90 hover:border-slate-600 backdrop-blur-md transition-all duration-300 shadow-[inset_0_1px_1px_rgba(255,255,255,0.15),0_10px_20px_rgba(0,0,0,0.5)] active:scale-95 select-none"
+          className="group relative overflow-hidden cursor-pointer flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-full border border-slate-800 border-t-white/20 bg-[#090a0f]/80 hover:bg-slate-900/90 hover:border-slate-600 backdrop-blur-md transition-all duration-300 shadow-[inset_0_1px_1px_rgba(255,255,255,0.15),0_10px_20px_rgba(0,0,0,0.5)] active:scale-95 select-none"
           title="Replay Video"
           aria-label="Replay Intro Video"
         >
@@ -202,13 +202,13 @@ export default function Hero() {
           {/* Animated Light Sheen Glare */}
           <div className="absolute inset-0 w-full h-full -skew-x-12 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 ease-out pointer-events-none" />
 
-          <RotateCcw size={13} className="text-slate-400 group-hover:text-slate-200 transition-colors group-hover:-rotate-90 duration-300 z-10" />
-          <span className="font-frozen font-bold text-xs tracking-wider text-slate-200 group-hover:text-white uppercase transition-colors z-10">REPLAY</span>
+          <RotateCcw size={12} className="text-slate-400 group-hover:text-slate-200 transition-colors group-hover:-rotate-90 duration-300 z-10" />
+          <span className="font-frozen font-bold text-[10px] sm:text-xs tracking-wider text-slate-200 group-hover:text-white uppercase transition-colors z-10">REPLAY</span>
         </button>
       </div>
 
       {/* Console Terminal Pill (HUD Status Indicator) ─ bottom center */}
-      <div className="absolute bottom-8 left-0 w-full flex justify-center z-30 pointer-events-none">
+      <div className="absolute bottom-4 sm:bottom-8 left-0 w-full flex justify-center z-30 pointer-events-none">
         <button
           onClick={scrollToNext}
           className="group pointer-events-auto relative overflow-hidden cursor-pointer flex items-center gap-3 px-4 py-2 rounded-full border border-slate-800 border-t-white/20 bg-[#090a0f]/80 hover:bg-slate-900/90 hover:border-slate-600 backdrop-blur-md transition-all duration-300 shadow-[inset_0_1px_1px_rgba(255,255,255,0.15),0_10px_20px_rgba(0,0,0,0.5)] active:scale-95 select-none"

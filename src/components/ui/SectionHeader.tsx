@@ -63,11 +63,11 @@ export default function SectionHeader({ id, title, className = "" }: SectionHead
         whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.15 }}
-        className="flex items-center gap-3.5 font-frozen text-[15px] sm:text-[18px] md:text-[21px] text-ink tracking-[0.25em] px-7 py-3.5 border border-signal/35 bg-deck/70 backdrop-blur-md rounded-lg"
+        className="flex items-center gap-2 sm:gap-3.5 font-frozen text-[12px] xs:text-[14px] sm:text-[18px] md:text-[21px] text-ink tracking-[0.15em] sm:tracking-[0.25em] px-4 sm:px-7 py-2.5 sm:py-3.5 border border-signal/35 bg-deck/70 backdrop-blur-md rounded-lg max-w-full truncate"
       >
         <span className="shiny-text-cyan drop-shadow-[0_0_8px_rgba(63,224,197,0.4)] font-black">{id}</span>
         <span className="text-signal font-black">/</span>
-        <span className="shiny-text-white font-black drop-shadow-[0_0_8px_rgba(237,235,250,0.2)]">{title}</span>
+        <span className="shiny-text-white font-black drop-shadow-[0_0_8px_rgba(237,235,250,0.2)] truncate">{title}</span>
       </motion.div>
 
       {/* Right ruled line */}
