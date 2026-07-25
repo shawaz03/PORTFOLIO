@@ -671,7 +671,7 @@ STATUS: UPLINKED SECURELY
                   <GithubIcon className="w-4 h-4 transition-all duration-300 grayscale opacity-65 group-hover:grayscale-0 group-hover:opacity-100" />
                 </a>
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/shawaz-j-979114302/"
                   target="_blank"
                   rel="noreferrer"
                   className="p-2.5 rounded-xl border border-white/5 bg-void/50 hover:border-[#0A66C2]/30 hover:bg-[#0A66C2]/5 transition-all duration-300 flex items-center justify-center group"

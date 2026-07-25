@@ -100,6 +100,7 @@ export default function RootLayout({
         sameAs: [
           "https://github.com/shawaz03",
           "https://www.instagram.com/__iamsha_",
+          "https://www.linkedin.com/in/shawaz-j-979114302/",
         ],
         knowsAbout: [
           "Web Development",

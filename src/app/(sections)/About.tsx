@@ -37,7 +37,7 @@ export default function About() {
     bio: 'Full-Stack Developer passionate about crafting immersive, high-performance web experiences using React, Next.js, and creative animations.',
     stats: { following: '419', followers: '1,133', posts: '5' },
     socialLinks: {
-      linkedin: 'https://linkedin.com',
+      linkedin: 'https://www.linkedin.com/in/shawaz-j-979114302/',
       github: 'https://github.com/shawaz03',
       twitter: 'https://twitter.com',
       instagram: 'https://www.instagram.com/__iamsha_?igsh=enpzYnpzYWs3Mzlj',
