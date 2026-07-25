@@ -15,6 +15,7 @@ import Footer from "@/app/(sections)/Footer";
 export default function Home() {
   return (
     <>
+      <h1 className="sr-only">Shawaz Portfolio - Full-Stack Developer & Interactive Web Engineer</h1>
       <PageLoader />
       <div className="flex flex-col w-full flex-1">
         <Hero />
