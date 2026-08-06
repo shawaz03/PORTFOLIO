@@ -234,9 +234,9 @@ type TimelineType = "fast" | "normal" | "flexible";
 export default function Contact() {
   // Form states
   const [selectedServices, setSelectedServices] = useState<ProjectType[]>(["fullstack"]);
-  const [budget, setBudget] = useState<number>(25); // in $k
+  const [budget, setBudget] = useState<number>(50); // in ₹k INR
   const [timeline, setTimeline] = useState<TimelineType>("normal");
-  
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -269,16 +269,16 @@ export default function Contact() {
     return `TX-${char1}${char2}-${numPart}-UPLINK`;
   };
 
-  // Automatically calculate budget recommendation based on selected services and timeline urgency
+  // Automatically calculate budget recommendation in INR based on selected services and timeline urgency
   useEffect(() => {
-    // Define base budgets for each service vector
+    // Define base budgets for each service vector in INR (thousands ₹K)
     const serviceCosts: Record<ProjectType, number> = {
-      fullstack: 25,   // Full-Stack Applications: $25K
-      frontend: 15,    // Frontend Applications: $15K
-      backend: 15,     // Backend Applications: $15K
-      design: 10,      // UI/UX Strategy: $10K
-      ai: 20,          // AI Integration: $20K
-      consulting: 5,   // Consultation: $5K
+      fullstack: 50,   // Full-Stack Applications: ₹50K
+      frontend: 25,    // Frontend Applications: ₹25K
+      backend: 25,     // Backend Applications: ₹25K
+      design: 15,      // UI/UX Strategy: ₹15K
+      ai: 40,          // AI Integration: ₹40K
+      consulting: 10,  // Consultation: ₹10K
     };
 
     // Calculate sum of base costs
@@ -292,16 +292,16 @@ export default function Contact() {
     };
     const multiplier = timelineMultipliers[timeline] || 1.0;
 
-    // Calculate estimated recommendation within range [5K, 100K]
-    const recommendedVal = Math.max(5, Math.min(100, Math.round(baseSum * multiplier)));
+    // Calculate estimated recommendation within range [₹10K, ₹300K]
+    const recommendedVal = Math.max(10, Math.min(300, Math.round(baseSum * multiplier)));
 
     setBudget(recommendedVal);
   }, [selectedServices, timeline]);
 
   // Dynamic budget color allocation with smooth blending
   const getBudgetColor = (val: number) => {
-    // Normalise val between 5 and 100 to 0 and 1
-    const t = (val - 5) / 95;
+    // Normalise val between 10 and 300 to 0 and 1
+    const t = (val - 10) / 290;
     let r, g, b;
     if (t < 0.5) {
       // Blend from #3FE0C5 (rgb(63, 224, 197)) to #6E5CFF (rgb(110, 92, 255))
@@ -403,33 +403,75 @@ export default function Contact() {
     triggerCircuitPulse();
   };
 
-  // Submit action logs simulated console
-  const handleSubmit = (e: React.FormEvent) => {
+  // Submit action logs console & dispatches real email to shawazstar@gmail.com
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name || !email) return;
 
     setStatus("transmitting");
     setLogs([]);
 
+    const serviceLabels: Record<ProjectType, string> = {
+      fullstack: "Full-Stack Applications",
+      frontend: "Frontend Applications",
+      backend: "Backend Applications",
+      design: "UI/UX Strategy",
+      ai: "AI Integration",
+      consulting: "Consultation"
+    };
+
+    const selectedServiceNames = selectedServices.map(s => serviceLabels[s] || s).join(", ");
+    const budgetRangeStr = `₹${budget}K - ₹${budget + 15}K INR`;
+    const timelineStr = timeline === "fast" ? "URGENT (< 1 Mo)" : timeline === "normal" ? "STANDARD (1-3 Mo)" : "FLEXIBLE (3+ Mo)";
+
     const logSequence = [
       "SYSTEM: INITIALIZING BROADCAST TRANSCEIVER...",
       "SYSTEM: SECURING ENCRYPTED LINK ON PORT 443...",
       `DATA: PACKING INQUIRY (SNDR: ${name.toUpperCase()} <${email.toUpperCase()}>)`,
-      `DATA: METRICS [BUDGET: $${budget}K | TIMELINE: ${timeline.toUpperCase()}]`,
-      `DATA: SERVICES [${selectedServices.map(s => s.toUpperCase()).join(", ")}]`,
-      "TRANS: UPLOADING PACKET TO CLOUD GATEWAY...",
-      "TRANS: PACKET ACKNOWLEDGED BY REMOTE J.SHAWAZ SERVER.",
+      `DATA: METRICS [BUDGET: ${budgetRangeStr} | TIMELINE: ${timeline.toUpperCase()}]`,
+      `DATA: VECTORS [${selectedServices.map(s => s.toUpperCase()).join(", ")}]`,
+      "TRANS: DISPATCHING PACKET TO SHAWAZSTAR@GMAIL.COM...",
+      "TRANS: PACKET ACKNOWLEDGED BY REMOTE J.SHAWAZ MAIL SERVER.",
       "TRANS: DISPATCH COMPLETE. TERMINAL STANDBY."
     ];
 
+    // Trigger visual terminal log animation
     logSequence.forEach((log, index) => {
       setTimeout(() => {
         setLogs(prev => [...prev, log]);
-        if (index === logSequence.length - 1) {
-          setStatus("success");
-        }
-      }, (index + 1) * 600);
+      }, (index + 1) * 450);
     });
+
+    // Send real email directly to shawazstar@gmail.com
+    try {
+      await fetch("https://formsubmit.co/ajax/shawazstar@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          _subject: `🚀 Portfolio Project Inquiry from ${name}`,
+          _template: "table",
+          _captcha: "false",
+          "Sender Name": name,
+          "Sender Email": email,
+          "Services Selected": selectedServiceNames,
+          "Estimated Budget": budgetRangeStr,
+          "Timeline": timelineStr,
+          "Message": message || "No custom message provided.",
+          "Transmission ID": getTransmissionCode(name),
+          "Timestamp": new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })
+        }),
+      });
+    } catch (err) {
+      console.log("Email dispatch log:", err);
+    } finally {
+      // Ensure terminal finish and transition to success view
+      setTimeout(() => {
+        setStatus("success");
+      }, logSequence.length * 450 + 200);
+    }
   };
 
   const handleCopyPass = () => {
@@ -449,7 +491,7 @@ TARGET: ${emailAddress}
 SENDER: ${name} <${email}>
 VECTORS: ${selectedServices.map(s => serviceLabels[s]).join(", ")}
 TIMELINE: ${timeline === "fast" ? "URGENT (< 1 Mo)" : timeline === "normal" ? "STANDARD (1-3 Mo)" : "FLEXIBLE (3+ Mo)"}
-EST. BUDGET: $${budget}K - $${budget + 5}K USD
+EST. BUDGET: ₹${budget}K - ₹${budget + 15}K INR
 STATUS: UPLINKED SECURELY
 --------------------------------
 `.trim();
@@ -584,7 +626,7 @@ STATUS: UPLINKED SECURELY
                       textShadow: `0 0 10px ${activeColor}40`
                     }}
                   >
-                    ${budget}K - ${budget + 5}K USD <span className="text-[10px] text-white/50 align-middle ml-1">(ESTIMATED)</span>
+                    ₹{budget}K - ₹{budget + 15}K INR <span className="text-[10px] text-white/50 align-middle ml-1">(ESTIMATED)</span>
                   </span>
                 </div>
                 <div className="relative mt-2 flex items-center">
@@ -592,23 +634,23 @@ STATUS: UPLINKED SECURELY
                     id="budget-range"
                     aria-label="Budget Estimation"
                     type="range"
-                    min="5"
-                    max="100"
-                    step="1"
+                    min="10"
+                    max="300"
+                    step="5"
                     value={budget}
                     readOnly={true}
                     className="w-full h-1 bg-white/10 rounded-lg appearance-none pointer-events-none outline-none transition-all duration-300"
                     style={{
-                      background: `linear-gradient(90deg, ${activeColor} ${((budget - 5) / 95) * 100}%, rgba(255,255,255,0.08) ${((budget - 5) / 95) * 100}%)`,
+                      background: `linear-gradient(90deg, ${activeColor} ${((budget - 10) / 290) * 100}%, rgba(255,255,255,0.08) ${((budget - 10) / 290) * 100}%)`,
                       // @ts-ignore
                       "--slider-color": activeColor
                     }}
                   />
                 </div>
                 <div className="flex items-center justify-between font-mono text-[10px] text-dim/70 px-1">
-                  <span>MIN_LIMIT ($5K)</span>
-                  <span>MEDIAN ($50K)</span>
-                  <span>CAPITAL ($100K+)</span>
+                  <span>MIN_LIMIT (₹10K)</span>
+                  <span>MEDIAN (₹1L)</span>
+                  <span>CAPITAL (₹3L+)</span>
                 </div>
               </div>
 
@@ -703,174 +745,187 @@ STATUS: UPLINKED SECURELY
             </div>
           </div>
 
-          {/* MIDDLE: Holographic Reactor Core and Laser Bridges */}
-          <div className="hidden lg:block lg:col-span-2 relative h-full pointer-events-none">
+          {/* MIDDLE: Holographic Quantum Cyber Gateway and Data Conduits */}
+          <div className="hidden lg:flex lg:col-span-2 relative h-full items-center justify-center pointer-events-none min-h-[480px]">
+            {/* Top Telemetry Badge */}
+            <div className="absolute top-8 left-1/2 -translate-x-1/2 z-20 font-mono text-[9px] text-[#3FE0C5] tracking-[0.2em] bg-void/80 border border-[#3FE0C5]/30 px-2.5 py-1 rounded-full backdrop-blur-md shadow-[0_0_10px_rgba(63,224,197,0.2)] flex items-center gap-1.5 whitespace-nowrap">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#3FE0C5] animate-ping" />
+              <span>LINK: ACTIVE</span>
+            </div>
+
+            {/* Bottom Telemetry Badge */}
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 font-mono text-[9px] text-[#FF7A45] tracking-[0.2em] bg-void/80 border border-[#FF7A45]/30 px-2.5 py-1 rounded-full backdrop-blur-md shadow-[0_0_10px_rgba(255,122,69,0.2)] flex items-center gap-1.5 whitespace-nowrap">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FF7A45] animate-pulse" />
+              <span>DATA: 10 Gbps</span>
+            </div>
+
             <svg className="absolute inset-0 w-full h-full" viewBox="0 0 160 500" fill="none">
               <defs>
                 {/* Laser Glow Filters */}
-                <filter id="neon-glow-cyan" x="-30%" y="-30%" width="160%" height="160%">
-                  <feGaussianBlur stdDeviation="3" result="blur" />
-                  <feMerge>
-                    <feMergeNode in="blur" />
-                    <feMergeNode in="SourceGraphic" />
-                  </feMerge>
-                </filter>
-                <filter id="neon-glow-violet" x="-30%" y="-30%" width="160%" height="160%">
+                <filter id="neon-glow-cyan" x="-40%" y="-40%" width="180%" height="180%">
                   <feGaussianBlur stdDeviation="4" result="blur" />
                   <feMerge>
                     <feMergeNode in="blur" />
                     <feMergeNode in="SourceGraphic" />
                   </feMerge>
                 </filter>
+                <filter id="neon-glow-violet" x="-40%" y="-40%" width="180%" height="180%">
+                  <feGaussianBlur stdDeviation="6" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
                 
-                <linearGradient id="laser-left" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#3FE0C5" stopOpacity="0.1" />
-                  <stop offset="100%" stopColor="#6E5CFF" stopOpacity="0.6" />
+                <linearGradient id="cyber-left-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#3FE0C5" stopOpacity="0.2" />
+                  <stop offset="50%" stopColor="#3FE0C5" stopOpacity="0.8" />
+                  <stop offset="100%" stopColor="#6E5CFF" stopOpacity="0.9" />
                 </linearGradient>
-                <linearGradient id="laser-right" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#6E5CFF" stopOpacity="0.6" />
-                  <stop offset="100%" stopColor="#FF7A45" stopOpacity="0.1" />
+                <linearGradient id="cyber-right-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#6E5CFF" stopOpacity="0.9" />
+                  <stop offset="50%" stopColor="#FF7A45" stopOpacity="0.8" />
+                  <stop offset="100%" stopColor="#FF7A45" stopOpacity="0.2" />
                 </linearGradient>
                 
-                <radialGradient id="core-gradient" cx="50%" cy="50%" r="50%">
+                <radialGradient id="quantum-core-gradient" cx="50%" cy="50%" r="50%">
                   <stop offset="0%" stopColor="#FFFFFF" />
-                  <stop offset="60%" stopColor="#6E5CFF" />
-                  <stop offset="100%" stopColor="#3FE0C5" stopOpacity="0" />
+                  <stop offset="40%" stopColor="#3FE0C5" />
+                  <stop offset="75%" stopColor="#6E5CFF" />
+                  <stop offset="100%" stopColor="#0A0912" stopOpacity="0" />
                 </radialGradient>
               </defs>
 
-              {/* Static Background Circuit path */}
+              {/* Ambient Track Conduit Base Lines */}
               <path
-                d="M 10 130 C 50 130, 60 250, 80 250"
-                stroke="rgba(255, 255, 255, 0.03)"
-                strokeWidth="1.5"
+                d="M 0 100 Q 50 100, 80 250 T 160 400"
+                stroke="rgba(110, 92, 255, 0.1)"
+                strokeWidth="2"
               />
               <path
-                d="M 10 370 C 50 370, 60 250, 80 250"
-                stroke="rgba(255, 255, 255, 0.03)"
-                strokeWidth="1.5"
+                d="M 0 400 Q 50 400, 80 250 T 160 100"
+                stroke="rgba(110, 92, 255, 0.1)"
+                strokeWidth="2"
               />
-              <path
-                d="M 80 250 C 100 250, 110 130, 150 130"
-                stroke="rgba(255, 255, 255, 0.03)"
-                strokeWidth="1.5"
-              />
-              <path
-                d="M 80 250 C 100 250, 110 370, 150 370"
-                stroke="rgba(255, 255, 255, 0.03)"
-                strokeWidth="1.5"
-              />
-
-              {/* Straight Direct Core Line */}
               <line
-                x1="10" y1="250" x2="150" y2="250"
-                stroke="rgba(110, 92, 255, 0.15)"
-                strokeWidth="1"
-                strokeDasharray="4 6"
+                x1="0" y1="250" x2="160" y2="250"
+                stroke="rgba(63, 224, 197, 0.2)"
+                strokeWidth="1.5"
+                strokeDasharray="6 6"
               />
 
-              {/* Laser bridges gradient fill path */}
+              {/* Main Glowing Laser Fiber-Optic Cables */}
               <path
-                d="M 10 130 C 50 130, 60 250, 80 250"
-                stroke="url(#laser-left)"
-                strokeWidth="1.5"
-                strokeOpacity="0.4"
+                d="M 0 100 Q 50 100, 80 250"
+                stroke="url(#cyber-left-grad)"
+                strokeWidth="2"
+                filter="url(#neon-glow-cyan)"
               />
               <path
-                d="M 10 370 C 50 370, 60 250, 80 250"
-                stroke="url(#laser-left)"
-                strokeWidth="1.5"
-                strokeOpacity="0.4"
+                d="M 0 400 Q 50 400, 80 250"
+                stroke="url(#cyber-left-grad)"
+                strokeWidth="2"
+                filter="url(#neon-glow-cyan)"
               />
               <path
-                d="M 80 250 C 100 250, 110 130, 150 130"
-                stroke="url(#laser-right)"
-                strokeWidth="1.5"
-                strokeOpacity="0.4"
+                d="M 80 250 Q 110 250, 160 100"
+                stroke="url(#cyber-right-grad)"
+                strokeWidth="2"
+                filter="url(#neon-glow-cyan)"
               />
               <path
-                d="M 80 250 C 100 250, 110 370, 150 370"
-                stroke="url(#laser-right)"
-                strokeWidth="1.5"
-                strokeOpacity="0.4"
+                d="M 80 250 Q 110 250, 160 400"
+                stroke="url(#cyber-right-grad)"
+                strokeWidth="2"
+                filter="url(#neon-glow-cyan)"
               />
 
-              {/* Dynamic pulse lines (Left) */}
+              {/* Dynamic Interactive GSAP Pulse Lines */}
               <path
                 className="circuit-pulse-line-left"
-                d="M 10 130 C 50 130, 60 250, 80 250"
+                d="M 0 100 Q 50 100, 80 250"
                 stroke="#3FE0C5"
-                strokeWidth="2.5"
+                strokeWidth="3.5"
                 filter="url(#neon-glow-cyan)"
                 strokeDasharray="180"
                 strokeDashoffset="180"
               />
               <path
                 className="circuit-pulse-line-left"
-                d="M 10 370 C 50 370, 60 250, 80 250"
+                d="M 0 400 Q 50 400, 80 250"
                 stroke="#3FE0C5"
-                strokeWidth="2.5"
+                strokeWidth="3.5"
                 filter="url(#neon-glow-cyan)"
                 strokeDasharray="180"
                 strokeDashoffset="180"
               />
 
-              {/* Dynamic pulse lines (Right) */}
               <path
                 className="circuit-pulse-line-right"
-                d="M 80 250 C 100 250, 110 130, 150 130"
+                d="M 80 250 Q 110 250, 160 100"
                 stroke="#FF7A45"
-                strokeWidth="2.5"
+                strokeWidth="3.5"
                 filter="url(#neon-glow-cyan)"
                 strokeDasharray="180"
                 strokeDashoffset="180"
               />
               <path
                 className="circuit-pulse-line-right"
-                d="M 80 250 C 100 250, 110 370, 150 370"
+                d="M 80 250 Q 110 250, 160 400"
                 stroke="#FF7A45"
-                strokeWidth="2.5"
+                strokeWidth="3.5"
                 filter="url(#neon-glow-cyan)"
                 strokeDasharray="180"
                 strokeDashoffset="180"
               />
 
-              {/* Central Holographic Reactor Core */}
+              {/* Central Holographic Quantum Core */}
               <g transform="translate(80, 250)" className="reactor-core-group">
-                {/* Outer Glow ring - Spinning */}
+                {/* Outer Glow Halo Ring */}
                 <circle
-                  r="26"
-                  fill="rgba(110, 92, 255, 0.04)"
-                  stroke="#6E5CFF"
-                  strokeWidth="1.2"
-                  strokeDasharray="5 7"
-                  className="animate-[spin_16s_linear_infinite]"
+                  r="34"
+                  fill="rgba(110, 92, 255, 0.08)"
+                  stroke="rgba(110, 92, 255, 0.3)"
+                  strokeWidth="1"
+                  strokeDasharray="4 8"
+                  className="animate-[spin_20s_linear_infinite]"
                   style={{ transformOrigin: "0px 0px" }}
                 />
                 
-                {/* Middle Tech Ring - Counter Spinning */}
+                {/* HUD Compass Ring */}
                 <circle
-                  r="18"
+                  r="24"
                   fill="none"
                   stroke="#3FE0C5"
                   strokeWidth="1.5"
-                  strokeDasharray="12 6"
-                  className="animate-[spin_7s_linear_infinite_reverse]"
+                  strokeDasharray="16 8"
+                  className="animate-[spin_10s_linear_infinite_reverse]"
                   style={{ transformOrigin: "0px 0px" }}
                 />
                 
-                {/* Core pulse center */}
+                {/* Outer Flare Pulse Ring */}
+                <circle
+                  r="16"
+                  fill="none"
+                  stroke="#FF7A45"
+                  strokeWidth="1.2"
+                  strokeDasharray="8 4"
+                  className="animate-[spin_6s_linear_infinite]"
+                  style={{ transformOrigin: "0px 0px" }}
+                />
+
+                {/* Core Plasma Detonation Ring */}
                 <circle
                   className="reactor-inner-pulse"
-                  r="8"
-                  fill="url(#core-gradient)"
+                  r="10"
+                  fill="url(#quantum-core-gradient)"
                   filter="url(#neon-glow-violet)"
                   style={{ transformOrigin: "0px 0px" }}
                 />
                 
-                {/* Core center dot */}
+                {/* Core White Pulse Center */}
                 <circle
-                  r="3.5"
+                  r="4"
                   fill="#FFFFFF"
                   className="animate-pulse"
                   style={{ transformOrigin: "0px 0px" }}
