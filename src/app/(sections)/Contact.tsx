@@ -745,7 +745,7 @@ STATUS: UPLINKED SECURELY
             </div>
           </div>
 
-          {/* MIDDLE: Neural Waveform Nexus — Flowing Data Stream Bridge */}
+          {/* MIDDLE: Clean Minimalist Pulse Beam Connector */}
           <div className="hidden lg:flex lg:col-span-2 relative h-full items-center justify-center pointer-events-none min-h-[480px]">
             <svg className="absolute inset-0 w-full h-full" viewBox="0 0 160 500" fill="none">
               <defs>
@@ -757,201 +757,126 @@ STATUS: UPLINKED SECURELY
                   </feMerge>
                 </filter>
                 <filter id="neon-glow-violet" x="-50%" y="-50%" width="200%" height="200%">
-                  <feGaussianBlur stdDeviation="5" result="blur" />
+                  <feGaussianBlur stdDeviation="4" result="blur" />
                   <feMerge>
                     <feMergeNode in="blur" />
                     <feMergeNode in="SourceGraphic" />
                   </feMerge>
                 </filter>
-                <filter id="soft-glow" x="-30%" y="-30%" width="160%" height="160%">
-                  <feGaussianBlur stdDeviation="2" result="blur" />
+                <filter id="orb-glow" x="-100%" y="-100%" width="300%" height="300%">
+                  <feGaussianBlur stdDeviation="8" result="blur" />
                   <feMerge>
                     <feMergeNode in="blur" />
                     <feMergeNode in="SourceGraphic" />
                   </feMerge>
                 </filter>
 
-                <linearGradient id="stream-cyan" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stopColor="#3FE0C5" stopOpacity="0" />
-                  <stop offset="30%" stopColor="#3FE0C5" stopOpacity="0.7" />
-                  <stop offset="50%" stopColor="#6E5CFF" stopOpacity="0.9" />
-                  <stop offset="70%" stopColor="#FF7A45" stopOpacity="0.7" />
-                  <stop offset="100%" stopColor="#FF7A45" stopOpacity="0" />
+                <linearGradient id="beam-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor="#6E5CFF" stopOpacity="0" />
+                  <stop offset="20%" stopColor="#6E5CFF" stopOpacity="0.3" />
+                  <stop offset="50%" stopColor="#6E5CFF" stopOpacity="0.5" />
+                  <stop offset="80%" stopColor="#6E5CFF" stopOpacity="0.3" />
+                  <stop offset="100%" stopColor="#6E5CFF" stopOpacity="0" />
                 </linearGradient>
 
-                <radialGradient id="nexus-core-grad" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stopColor="#FFFFFF" stopOpacity="1" />
-                  <stop offset="30%" stopColor="#6E5CFF" stopOpacity="0.8" />
+                <radialGradient id="center-orb-grad" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.9" />
+                  <stop offset="50%" stopColor="#6E5CFF" stopOpacity="0.4" />
                   <stop offset="100%" stopColor="#6E5CFF" stopOpacity="0" />
                 </radialGradient>
               </defs>
 
-              {/* Vertical flowing waveform streams — sine wave data paths */}
-              {/* Stream 1: Left sine wave */}
-              <path
-                d="M 55 40 C 45 80, 65 120, 55 160 C 45 200, 65 240, 55 280 C 45 320, 65 360, 55 400 C 45 440, 65 480, 55 500"
-                stroke="rgba(63, 224, 197, 0.25)"
-                strokeWidth="1.5"
-                fill="none"
-              />
-              <path
-                d="M 55 40 C 45 80, 65 120, 55 160 C 45 200, 65 240, 55 280 C 45 320, 65 360, 55 400 C 45 440, 65 480, 55 500"
-                stroke="#3FE0C5"
-                strokeWidth="1.5"
-                fill="none"
-                filter="url(#soft-glow)"
-                strokeDasharray="20 30"
-                className="animate-[waveflow_3s_linear_infinite]"
-              />
-
-              {/* Stream 2: Center vertical backbone */}
-              <line x1="80" y1="30" x2="80" y2="470" stroke="rgba(110, 92, 255, 0.12)" strokeWidth="1" />
+              {/* Main vertical beam — thin, elegant */}
               <line
-                x1="80" y1="30" x2="80" y2="470"
-                stroke="url(#stream-cyan)"
-                strokeWidth="1.5"
-                strokeDasharray="8 12"
-                className="animate-[waveflow_4s_linear_infinite]"
+                x1="80" y1="50" x2="80" y2="450"
+                stroke="url(#beam-gradient)"
+                strokeWidth="1"
               />
 
-              {/* Stream 3: Right sine wave (inverted phase) */}
-              <path
-                d="M 105 40 C 115 80, 95 120, 105 160 C 115 200, 95 240, 105 280 C 115 320, 95 360, 105 400 C 115 440, 95 480, 105 500"
-                stroke="rgba(255, 122, 69, 0.25)"
-                strokeWidth="1.5"
-                fill="none"
-              />
-              <path
-                d="M 105 40 C 115 80, 95 120, 105 160 C 115 200, 95 240, 105 280 C 115 320, 95 360, 105 400 C 115 440, 95 480, 105 500"
-                stroke="#FF7A45"
-                strokeWidth="1.5"
-                fill="none"
-                filter="url(#soft-glow)"
-                strokeDasharray="20 30"
-                className="animate-[waveflow_3.5s_linear_infinite_reverse]"
+              {/* Subtle dashed overlay for texture */}
+              <line
+                x1="80" y1="50" x2="80" y2="450"
+                stroke="rgba(110, 92, 255, 0.15)"
+                strokeWidth="0.5"
+                strokeDasharray="4 8"
               />
 
-              {/* Horizontal cross-connects at intervals */}
-              <line x1="55" y1="160" x2="105" y2="160" stroke="rgba(110, 92, 255, 0.08)" strokeWidth="0.8" strokeDasharray="3 5" />
-              <line x1="55" y1="250" x2="105" y2="250" stroke="rgba(110, 92, 255, 0.12)" strokeWidth="0.8" strokeDasharray="3 5" />
-              <line x1="55" y1="340" x2="105" y2="340" stroke="rgba(110, 92, 255, 0.08)" strokeWidth="0.8" strokeDasharray="3 5" />
+              {/* Left horizontal bridge at center */}
+              <line
+                x1="0" y1="250" x2="72" y2="250"
+                stroke="rgba(63, 224, 197, 0.15)"
+                strokeWidth="0.8"
+                strokeDasharray="3 6"
+              />
 
-              {/* Interactive GSAP Pulse Lines — horizontal bursts through center */}
-              <path
+              {/* Right horizontal bridge at center */}
+              <line
+                x1="88" y1="250" x2="160" y2="250"
+                stroke="rgba(255, 122, 69, 0.15)"
+                strokeWidth="0.8"
+                strokeDasharray="3 6"
+              />
+
+              {/* GSAP Interactive Pulse Lines — horizontal flash on interaction */}
+              <line
                 className="circuit-pulse-line-left"
-                d="M 10 250 Q 40 230, 80 250"
+                x1="0" y1="250" x2="80" y2="250"
                 stroke="#3FE0C5"
-                strokeWidth="2.5"
-                fill="none"
+                strokeWidth="1.5"
                 filter="url(#neon-glow-cyan)"
                 strokeDasharray="120"
                 strokeDashoffset="120"
               />
-              <path
-                className="circuit-pulse-line-left"
-                d="M 10 250 Q 40 270, 80 250"
-                stroke="#3FE0C5"
-                strokeWidth="2.5"
-                fill="none"
+              <line
+                className="circuit-pulse-line-right"
+                x1="80" y1="250" x2="160" y2="250"
+                stroke="#FF7A45"
+                strokeWidth="1.5"
                 filter="url(#neon-glow-cyan)"
                 strokeDasharray="120"
                 strokeDashoffset="120"
               />
 
-              <path
-                className="circuit-pulse-line-right"
-                d="M 80 250 Q 120 230, 150 250"
-                stroke="#FF7A45"
-                strokeWidth="2.5"
-                fill="none"
-                filter="url(#neon-glow-cyan)"
-                strokeDasharray="120"
-                strokeDashoffset="120"
-              />
-              <path
-                className="circuit-pulse-line-right"
-                d="M 80 250 Q 120 270, 150 250"
-                stroke="#FF7A45"
-                strokeWidth="2.5"
-                fill="none"
-                filter="url(#neon-glow-cyan)"
-                strokeDasharray="120"
-                strokeDashoffset="120"
-              />
-
-              {/* Central Nexus Node — hexagonal energy core */}
+              {/* Center node — small, clean dot */}
               <g transform="translate(80, 250)" className="reactor-core-group">
-                {/* Outer orbital particle ring */}
+                {/* Soft halo */}
                 <circle
-                  r="28"
-                  fill="none"
-                  stroke="rgba(110, 92, 255, 0.15)"
-                  strokeWidth="0.8"
-                  strokeDasharray="3 6"
-                  className="animate-[spin_25s_linear_infinite]"
-                  style={{ transformOrigin: "0px 0px" }}
-                />
-
-                {/* Hexagon outer frame */}
-                <polygon
-                  points="0,-20 17,-10 17,10 0,20 -17,10 -17,-10"
-                  fill="none"
-                  stroke="#6E5CFF"
-                  strokeWidth="1"
-                  opacity="0.4"
-                  className="animate-[spin_18s_linear_infinite_reverse]"
-                  style={{ transformOrigin: "0px 0px" }}
-                />
-
-                {/* Inner hexagon — counter spin */}
-                <polygon
-                  points="0,-12 10,-6 10,6 0,12 -10,6 -10,-6"
-                  fill="rgba(110, 92, 255, 0.06)"
-                  stroke="#3FE0C5"
-                  strokeWidth="0.8"
+                  r="12"
+                  fill="url(#center-orb-grad)"
                   opacity="0.5"
-                  className="animate-[spin_12s_linear_infinite]"
-                  style={{ transformOrigin: "0px 0px" }}
                 />
 
-                {/* Core plasma orb */}
+                {/* Core dot */}
                 <circle
                   className="reactor-inner-pulse"
-                  r="7"
-                  fill="url(#nexus-core-grad)"
+                  r="3.5"
+                  fill="#6E5CFF"
                   filter="url(#neon-glow-violet)"
                   style={{ transformOrigin: "0px 0px" }}
                 />
 
-                {/* Bright center dot */}
+                {/* Bright center */}
                 <circle
-                  r="2.5"
+                  r="1.5"
                   fill="#FFFFFF"
                   className="animate-pulse"
                   style={{ transformOrigin: "0px 0px" }}
                 />
               </g>
 
-              {/* Small floating data particles along the streams */}
-              <circle r="1.5" fill="#3FE0C5" opacity="0.6" filter="url(#soft-glow)">
+              {/* Traveling orb — single glowing dot moves along the beam */}
+              <circle r="3" fill="#6E5CFF" opacity="0.7" filter="url(#orb-glow)">
                 <animateMotion
                   dur="4s"
                   repeatCount="indefinite"
-                  path="M 55 40 C 45 80, 65 120, 55 160 C 45 200, 65 240, 55 280 C 45 320, 65 360, 55 400"
+                  path="M 80 50 L 80 450"
                 />
               </circle>
-              <circle r="1.5" fill="#FF7A45" opacity="0.6" filter="url(#soft-glow)">
+              <circle r="1.5" fill="#FFFFFF" opacity="0.9">
                 <animateMotion
-                  dur="4.5s"
+                  dur="4s"
                   repeatCount="indefinite"
-                  path="M 105 40 C 115 80, 95 120, 105 160 C 115 200, 95 240, 105 280 C 115 320, 95 360, 105 400"
-                />
-              </circle>
-              <circle r="1" fill="#6E5CFF" opacity="0.5" filter="url(#soft-glow)">
-                <animateMotion
-                  dur="5s"
-                  repeatCount="indefinite"
-                  path="M 80 30 L 80 470"
+                  path="M 80 50 L 80 450"
                 />
               </circle>
             </svg>
