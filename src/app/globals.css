@@ -29,9 +29,7 @@
 }
 
 .font-frozen {
-  font-family: "Clash Display", "General Sans", sans-serif !important;
-  font-feature-settings: "kern" 1;
-  font-kerning: normal;
+  font-family: 'Ice kingdom', 'IceKingdom', sans-serif !important;
 }
 
 @font-face {
@@ -43,9 +41,7 @@
 }
 
 .font-hocus {
-  font-family: "Clash Display", "General Sans", sans-serif !important;
-  font-feature-settings: "kern" 1;
-  font-kerning: normal;
+  font-family: 'Hocus Pocus', 'HocusPocus', sans-serif !important;
 }
 
 @font-face {
@@ -57,9 +53,7 @@
 }
 
 .font-pirates {
-  font-family: "Clash Display", "General Sans", sans-serif !important;
-  font-feature-settings: "kern" 1;
-  font-kerning: normal;
+  font-family: 'Pieces of Eight', 'PiecesofEight', sans-serif !important;
 }
 
 @font-face {
@@ -71,9 +65,7 @@
 }
 
 .font-disney {
-  font-family: "Clash Display", "General Sans", sans-serif !important;
-  font-feature-settings: "kern" 1;
-  font-kerning: normal;
+  font-family: 'Princess And The Frog', sans-serif !important;
 }
 
 @font-face {
@@ -85,9 +77,7 @@
 }
 
 .font-mermaid {
-  font-family: "General Sans", "Inter", sans-serif !important;
-  font-feature-settings: "kern" 1;
-  font-kerning: normal;
+  font-family: 'Little Mermaid', 'Mermaidtales', sans-serif !important;
 }
 
 :root {
@@ -105,10 +95,10 @@
   --font-sans: "General Sans", "Inter", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
   --font-italico: "Italico", sans-serif;
-  --font-mermaid: "General Sans", "Inter", sans-serif;
-  --font-frozen: "Clash Display", sans-serif;
-  --font-hocus: "Clash Display", sans-serif;
-  --font-disney: "Clash Display", sans-serif;
+  --font-mermaid: "Little Mermaid", "Mermaidtales", cursive;
+  --font-frozen: "Ice kingdom", sans-serif;
+  --font-hocus: "Hocus Pocus", sans-serif;
+  --font-disney: "Princess And The Frog", sans-serif;
 
   --color-void: var(--void);
   --color-deck: var(--deck);
