@@ -338,55 +338,81 @@ export default function Contact() {
     return () => clearInterval(interval);
   }, []);
 
-  // Circuit animation logic: Waveform Nexus pulse transfer
+  // Circuit animation logic: Enhanced interactive pulse transfer on user selection
   const triggerCircuitPulse = () => {
     const leftLines = document.querySelectorAll(".circuit-pulse-line-left");
     const rightLines = document.querySelectorAll(".circuit-pulse-line-right");
     const corePulse = document.querySelector(".reactor-inner-pulse");
+    const shockwave = document.querySelector(".connector-shockwave");
+    const beamFlash = document.querySelector(".main-beam-flash");
     
     if (!leftLines.length || !rightLines.length || !corePulse) return;
 
-    // Create GSAP Timeline for sequential flow
+    // Create GSAP Timeline for responsive, sleek signal flow
     const tl = gsap.timeline();
     
-    // 1. Travel from Left Card to Nexus Core
+    // 1. Signal shoots from Left Card to Central Node
     tl.fromTo(
       leftLines,
-      { strokeDashoffset: 120 },
-      { strokeDashoffset: 0, duration: 0.4, ease: "power1.inOut" }
+      { strokeDashoffset: 80, opacity: 1 },
+      { strokeDashoffset: 0, opacity: 1, duration: 0.3, ease: "power2.out" }
     );
     
-    // 2. Nexus Core detonation / flash
+    // 2. Central Core shockwave ripple expansion
+    if (shockwave) {
+      tl.fromTo(
+        shockwave,
+        { scale: 1, opacity: 1 },
+        { 
+          scale: 4.5, 
+          opacity: 0, 
+          duration: 0.45, 
+          ease: "power2.out",
+          transformOrigin: "center center"
+        },
+        "-=0.1"
+      );
+    }
+
+    // 3. Central Core dot pulse flash
     tl.fromTo(
       corePulse,
       { scale: 1, opacity: 1 },
       { 
-        scale: 2.5, 
-        opacity: 0, 
-        duration: 0.3, 
+        scale: 2.2, 
+        opacity: 0.8, 
+        duration: 0.2, 
+        yoyo: true, 
+        repeat: 1,
         ease: "power2.out",
         transformOrigin: "center center"
       },
-      "-=0.1"
+      "-=0.4"
     );
+
+    // 4. Main vertical beam flash
+    if (beamFlash) {
+      tl.fromTo(
+        beamFlash,
+        { opacity: 0 },
+        { opacity: 0.8, duration: 0.25, yoyo: true, repeat: 1, ease: "power1.inOut" },
+        "-=0.35"
+      );
+    }
     
-    // 3. Travel from Nexus Core to Right Card
+    // 5. Signal propagates from Central Node to Right Card
     tl.fromTo(
       rightLines,
-      { strokeDashoffset: 120 },
-      { strokeDashoffset: 0, duration: 0.4, ease: "power1.inOut" },
+      { strokeDashoffset: 80, opacity: 1 },
+      { strokeDashoffset: 0, opacity: 1, duration: 0.3, ease: "power2.out" },
       "-=0.2"
     );
     
-    // Reset lines and core state after animation
+    // Reset pulse lines after flow completes
     tl.to([...leftLines, ...rightLines], {
-      strokeDashoffset: 120,
-      duration: 0.1
-    });
-    tl.to(corePulse, {
-      scale: 1,
-      opacity: 1,
-      duration: 0.15
+      strokeDashoffset: 80,
+      opacity: 0.3,
+      duration: 0.2
     });
   };
 
@@ -793,6 +819,16 @@ STATUS: UPLINKED SECURELY
                 strokeWidth="1"
               />
 
+              {/* Main vertical beam GSAP flash flare */}
+              <line
+                className="main-beam-flash"
+                x1="80" y1="50" x2="80" y2="450"
+                stroke="#6E5CFF"
+                strokeWidth="2.5"
+                opacity="0"
+                filter="url(#neon-glow-violet)"
+              />
+
               {/* Subtle dashed overlay for texture */}
               <line
                 x1="80" y1="50" x2="80" y2="450"
@@ -817,28 +853,41 @@ STATUS: UPLINKED SECURELY
                 strokeDasharray="3 6"
               />
 
-              {/* GSAP Interactive Pulse Lines — horizontal flash on interaction */}
+              {/* GSAP Interactive Pulse Lines — horizontal laser flash on user selection */}
               <line
                 className="circuit-pulse-line-left"
                 x1="0" y1="250" x2="80" y2="250"
                 stroke="#3FE0C5"
-                strokeWidth="1.5"
+                strokeWidth="2.5"
                 filter="url(#neon-glow-cyan)"
-                strokeDasharray="120"
-                strokeDashoffset="120"
+                strokeDasharray="80"
+                strokeDashoffset="80"
+                opacity="0.3"
               />
               <line
                 className="circuit-pulse-line-right"
                 x1="80" y1="250" x2="160" y2="250"
                 stroke="#FF7A45"
-                strokeWidth="1.5"
+                strokeWidth="2.5"
                 filter="url(#neon-glow-cyan)"
-                strokeDasharray="120"
-                strokeDashoffset="120"
+                strokeDasharray="80"
+                strokeDashoffset="80"
+                opacity="0.3"
               />
 
-              {/* Center node — small, clean dot */}
+              {/* Center node — small, clean dot with shockwave ripple */}
               <g transform="translate(80, 250)" className="reactor-core-group">
+                {/* Shockwave ripple circle triggered on selection */}
+                <circle
+                  className="connector-shockwave"
+                  r="4"
+                  fill="none"
+                  stroke="#3FE0C5"
+                  strokeWidth="1.5"
+                  opacity="0"
+                  style={{ transformOrigin: "0px 0px" }}
+                />
+
                 {/* Soft halo */}
                 <circle
                   r="12"
