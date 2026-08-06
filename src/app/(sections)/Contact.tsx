@@ -273,12 +273,12 @@ export default function Contact() {
   useEffect(() => {
     // Define base budgets for each service vector in INR (thousands ₹K)
     const serviceCosts: Record<ProjectType, number> = {
-      fullstack: 50,   // Full-Stack Applications: ₹50K
-      frontend: 25,    // Frontend Applications: ₹25K
-      backend: 25,     // Backend Applications: ₹25K
-      design: 15,      // UI/UX Strategy: ₹15K
-      ai: 40,          // AI Integration: ₹40K
-      consulting: 10,  // Consultation: ₹10K
+      fullstack: 30,   // Full-Stack Applications: ₹30K
+      frontend: 15,    // Frontend Applications: ₹15K
+      backend: 15,     // Backend Applications: ₹15K
+      design: 10,      // UI/UX Strategy: ₹10K
+      ai: 25,          // AI Integration: ₹25K
+      consulting: 5,   // Consultation: ₹5K
     };
 
     // Calculate sum of base costs
@@ -292,16 +292,16 @@ export default function Contact() {
     };
     const multiplier = timelineMultipliers[timeline] || 1.0;
 
-    // Calculate estimated recommendation within range [₹10K, ₹300K]
-    const recommendedVal = Math.max(10, Math.min(300, Math.round(baseSum * multiplier)));
+    // Calculate estimated recommendation within range [₹10K, ₹100K]
+    const recommendedVal = Math.max(10, Math.min(100, Math.round(baseSum * multiplier)));
 
     setBudget(recommendedVal);
   }, [selectedServices, timeline]);
 
   // Dynamic budget color allocation with smooth blending
   const getBudgetColor = (val: number) => {
-    // Normalise val between 10 and 300 to 0 and 1
-    const t = (val - 10) / 290;
+    // Normalise val between 10 and 100 to 0 and 1
+    const t = (val - 10) / 90;
     let r, g, b;
     if (t < 0.5) {
       // Blend from #3FE0C5 (rgb(63, 224, 197)) to #6E5CFF (rgb(110, 92, 255))
@@ -338,7 +338,7 @@ export default function Contact() {
     return () => clearInterval(interval);
   }, []);
 
-  // Circuit animation logic: Sequential Holographic Reactor Core Transfer
+  // Circuit animation logic: Waveform Nexus pulse transfer
   const triggerCircuitPulse = () => {
     const leftLines = document.querySelectorAll(".circuit-pulse-line-left");
     const rightLines = document.querySelectorAll(".circuit-pulse-line-right");
@@ -349,44 +349,44 @@ export default function Contact() {
     // Create GSAP Timeline for sequential flow
     const tl = gsap.timeline();
     
-    // 1. Travel from Left Card to Reactor Core
+    // 1. Travel from Left Card to Nexus Core
     tl.fromTo(
       leftLines,
-      { strokeDashoffset: 180 },
-      { strokeDashoffset: 0, duration: 0.5, ease: "power1.inOut" }
+      { strokeDashoffset: 120 },
+      { strokeDashoffset: 0, duration: 0.4, ease: "power1.inOut" }
     );
     
-    // 2. Reactor Core detonation / flash
+    // 2. Nexus Core detonation / flash
     tl.fromTo(
       corePulse,
       { scale: 1, opacity: 1 },
       { 
-        scale: 2.2, 
+        scale: 2.5, 
         opacity: 0, 
-        duration: 0.35, 
+        duration: 0.3, 
         ease: "power2.out",
         transformOrigin: "center center"
       },
-      "-=0.15" // slight overlap
+      "-=0.1"
     );
     
-    // 3. Travel from Reactor Core to Right Card
+    // 3. Travel from Nexus Core to Right Card
     tl.fromTo(
       rightLines,
-      { strokeDashoffset: 180 },
-      { strokeDashoffset: 0, duration: 0.5, ease: "power1.inOut" },
-      "-=0.25" // overlap with core detonation
+      { strokeDashoffset: 120 },
+      { strokeDashoffset: 0, duration: 0.4, ease: "power1.inOut" },
+      "-=0.2"
     );
     
     // Reset lines and core state after animation
     tl.to([...leftLines, ...rightLines], {
-      strokeDashoffset: 180,
+      strokeDashoffset: 120,
       duration: 0.1
     });
     tl.to(corePulse, {
       scale: 1,
       opacity: 1,
-      duration: 0.1
+      duration: 0.15
     });
   };
 
@@ -421,7 +421,7 @@ export default function Contact() {
     };
 
     const selectedServiceNames = selectedServices.map(s => serviceLabels[s] || s).join(", ");
-    const budgetRangeStr = `₹${budget}K - ₹${budget + 15}K INR`;
+    const budgetRangeStr = `₹${budget}K - ₹${budget + 5}K INR`;
     const timelineStr = timeline === "fast" ? "URGENT (< 1 Mo)" : timeline === "normal" ? "STANDARD (1-3 Mo)" : "FLEXIBLE (3+ Mo)";
 
     const logSequence = [
@@ -491,7 +491,7 @@ TARGET: ${emailAddress}
 SENDER: ${name} <${email}>
 VECTORS: ${selectedServices.map(s => serviceLabels[s]).join(", ")}
 TIMELINE: ${timeline === "fast" ? "URGENT (< 1 Mo)" : timeline === "normal" ? "STANDARD (1-3 Mo)" : "FLEXIBLE (3+ Mo)"}
-EST. BUDGET: ₹${budget}K - ₹${budget + 15}K INR
+EST. BUDGET: ₹${budget}K - ₹${budget + 5}K INR
 STATUS: UPLINKED SECURELY
 --------------------------------
 `.trim();
@@ -626,7 +626,7 @@ STATUS: UPLINKED SECURELY
                       textShadow: `0 0 10px ${activeColor}40`
                     }}
                   >
-                    ₹{budget}K - ₹{budget + 15}K INR <span className="text-[10px] text-white/50 align-middle ml-1">(ESTIMATED)</span>
+                    ₹{budget}K - ₹{budget + 5}K INR <span className="text-[10px] text-white/50 align-middle ml-1">(ESTIMATED)</span>
                   </span>
                 </div>
                 <div className="relative mt-2 flex items-center">
@@ -635,13 +635,13 @@ STATUS: UPLINKED SECURELY
                     aria-label="Budget Estimation"
                     type="range"
                     min="10"
-                    max="300"
+                    max="100"
                     step="5"
                     value={budget}
                     readOnly={true}
                     className="w-full h-1 bg-white/10 rounded-lg appearance-none pointer-events-none outline-none transition-all duration-300"
                     style={{
-                      background: `linear-gradient(90deg, ${activeColor} ${((budget - 10) / 290) * 100}%, rgba(255,255,255,0.08) ${((budget - 10) / 290) * 100}%)`,
+                      background: `linear-gradient(90deg, ${activeColor} ${((budget - 10) / 90) * 100}%, rgba(255,255,255,0.08) ${((budget - 10) / 90) * 100}%)`,
                       // @ts-ignore
                       "--slider-color": activeColor
                     }}
@@ -649,8 +649,8 @@ STATUS: UPLINKED SECURELY
                 </div>
                 <div className="flex items-center justify-between font-mono text-[10px] text-dim/70 px-1">
                   <span>MIN_LIMIT (₹10K)</span>
-                  <span>MEDIAN (₹1L)</span>
-                  <span>CAPITAL (₹3L+)</span>
+                  <span>MEDIAN (₹40K)</span>
+                  <span>CAPITAL (₹1L)</span>
                 </div>
               </div>
 
@@ -745,192 +745,215 @@ STATUS: UPLINKED SECURELY
             </div>
           </div>
 
-          {/* MIDDLE: Holographic Quantum Cyber Gateway and Data Conduits */}
+          {/* MIDDLE: Neural Waveform Nexus — Flowing Data Stream Bridge */}
           <div className="hidden lg:flex lg:col-span-2 relative h-full items-center justify-center pointer-events-none min-h-[480px]">
-            {/* Top Telemetry Badge */}
-            <div className="absolute top-8 left-1/2 -translate-x-1/2 z-20 font-mono text-[9px] text-[#3FE0C5] tracking-[0.2em] bg-void/80 border border-[#3FE0C5]/30 px-2.5 py-1 rounded-full backdrop-blur-md shadow-[0_0_10px_rgba(63,224,197,0.2)] flex items-center gap-1.5 whitespace-nowrap">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#3FE0C5] animate-ping" />
-              <span>LINK: ACTIVE</span>
-            </div>
-
-            {/* Bottom Telemetry Badge */}
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 font-mono text-[9px] text-[#FF7A45] tracking-[0.2em] bg-void/80 border border-[#FF7A45]/30 px-2.5 py-1 rounded-full backdrop-blur-md shadow-[0_0_10px_rgba(255,122,69,0.2)] flex items-center gap-1.5 whitespace-nowrap">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#FF7A45] animate-pulse" />
-              <span>DATA: 10 Gbps</span>
-            </div>
-
             <svg className="absolute inset-0 w-full h-full" viewBox="0 0 160 500" fill="none">
               <defs>
-                {/* Laser Glow Filters */}
-                <filter id="neon-glow-cyan" x="-40%" y="-40%" width="180%" height="180%">
-                  <feGaussianBlur stdDeviation="4" result="blur" />
+                <filter id="neon-glow-cyan" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="3" result="blur" />
                   <feMerge>
                     <feMergeNode in="blur" />
                     <feMergeNode in="SourceGraphic" />
                   </feMerge>
                 </filter>
-                <filter id="neon-glow-violet" x="-40%" y="-40%" width="180%" height="180%">
-                  <feGaussianBlur stdDeviation="6" result="blur" />
+                <filter id="neon-glow-violet" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="5" result="blur" />
                   <feMerge>
                     <feMergeNode in="blur" />
                     <feMergeNode in="SourceGraphic" />
                   </feMerge>
                 </filter>
-                
-                <linearGradient id="cyber-left-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#3FE0C5" stopOpacity="0.2" />
-                  <stop offset="50%" stopColor="#3FE0C5" stopOpacity="0.8" />
-                  <stop offset="100%" stopColor="#6E5CFF" stopOpacity="0.9" />
+                <filter id="soft-glow" x="-30%" y="-30%" width="160%" height="160%">
+                  <feGaussianBlur stdDeviation="2" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+
+                <linearGradient id="stream-cyan" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor="#3FE0C5" stopOpacity="0" />
+                  <stop offset="30%" stopColor="#3FE0C5" stopOpacity="0.7" />
+                  <stop offset="50%" stopColor="#6E5CFF" stopOpacity="0.9" />
+                  <stop offset="70%" stopColor="#FF7A45" stopOpacity="0.7" />
+                  <stop offset="100%" stopColor="#FF7A45" stopOpacity="0" />
                 </linearGradient>
-                <linearGradient id="cyber-right-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#6E5CFF" stopOpacity="0.9" />
-                  <stop offset="50%" stopColor="#FF7A45" stopOpacity="0.8" />
-                  <stop offset="100%" stopColor="#FF7A45" stopOpacity="0.2" />
-                </linearGradient>
-                
-                <radialGradient id="quantum-core-gradient" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stopColor="#FFFFFF" />
-                  <stop offset="40%" stopColor="#3FE0C5" />
-                  <stop offset="75%" stopColor="#6E5CFF" />
-                  <stop offset="100%" stopColor="#0A0912" stopOpacity="0" />
+
+                <radialGradient id="nexus-core-grad" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stopColor="#FFFFFF" stopOpacity="1" />
+                  <stop offset="30%" stopColor="#6E5CFF" stopOpacity="0.8" />
+                  <stop offset="100%" stopColor="#6E5CFF" stopOpacity="0" />
                 </radialGradient>
               </defs>
 
-              {/* Ambient Track Conduit Base Lines */}
+              {/* Vertical flowing waveform streams — sine wave data paths */}
+              {/* Stream 1: Left sine wave */}
               <path
-                d="M 0 100 Q 50 100, 80 250 T 160 400"
-                stroke="rgba(110, 92, 255, 0.1)"
-                strokeWidth="2"
-              />
-              <path
-                d="M 0 400 Q 50 400, 80 250 T 160 100"
-                stroke="rgba(110, 92, 255, 0.1)"
-                strokeWidth="2"
-              />
-              <line
-                x1="0" y1="250" x2="160" y2="250"
-                stroke="rgba(63, 224, 197, 0.2)"
+                d="M 55 40 C 45 80, 65 120, 55 160 C 45 200, 65 240, 55 280 C 45 320, 65 360, 55 400 C 45 440, 65 480, 55 500"
+                stroke="rgba(63, 224, 197, 0.25)"
                 strokeWidth="1.5"
-                strokeDasharray="6 6"
+                fill="none"
+              />
+              <path
+                d="M 55 40 C 45 80, 65 120, 55 160 C 45 200, 65 240, 55 280 C 45 320, 65 360, 55 400 C 45 440, 65 480, 55 500"
+                stroke="#3FE0C5"
+                strokeWidth="1.5"
+                fill="none"
+                filter="url(#soft-glow)"
+                strokeDasharray="20 30"
+                className="animate-[waveflow_3s_linear_infinite]"
               />
 
-              {/* Main Glowing Laser Fiber-Optic Cables */}
-              <path
-                d="M 0 100 Q 50 100, 80 250"
-                stroke="url(#cyber-left-grad)"
-                strokeWidth="2"
-                filter="url(#neon-glow-cyan)"
-              />
-              <path
-                d="M 0 400 Q 50 400, 80 250"
-                stroke="url(#cyber-left-grad)"
-                strokeWidth="2"
-                filter="url(#neon-glow-cyan)"
-              />
-              <path
-                d="M 80 250 Q 110 250, 160 100"
-                stroke="url(#cyber-right-grad)"
-                strokeWidth="2"
-                filter="url(#neon-glow-cyan)"
-              />
-              <path
-                d="M 80 250 Q 110 250, 160 400"
-                stroke="url(#cyber-right-grad)"
-                strokeWidth="2"
-                filter="url(#neon-glow-cyan)"
+              {/* Stream 2: Center vertical backbone */}
+              <line x1="80" y1="30" x2="80" y2="470" stroke="rgba(110, 92, 255, 0.12)" strokeWidth="1" />
+              <line
+                x1="80" y1="30" x2="80" y2="470"
+                stroke="url(#stream-cyan)"
+                strokeWidth="1.5"
+                strokeDasharray="8 12"
+                className="animate-[waveflow_4s_linear_infinite]"
               />
 
-              {/* Dynamic Interactive GSAP Pulse Lines */}
+              {/* Stream 3: Right sine wave (inverted phase) */}
+              <path
+                d="M 105 40 C 115 80, 95 120, 105 160 C 115 200, 95 240, 105 280 C 115 320, 95 360, 105 400 C 115 440, 95 480, 105 500"
+                stroke="rgba(255, 122, 69, 0.25)"
+                strokeWidth="1.5"
+                fill="none"
+              />
+              <path
+                d="M 105 40 C 115 80, 95 120, 105 160 C 115 200, 95 240, 105 280 C 115 320, 95 360, 105 400 C 115 440, 95 480, 105 500"
+                stroke="#FF7A45"
+                strokeWidth="1.5"
+                fill="none"
+                filter="url(#soft-glow)"
+                strokeDasharray="20 30"
+                className="animate-[waveflow_3.5s_linear_infinite_reverse]"
+              />
+
+              {/* Horizontal cross-connects at intervals */}
+              <line x1="55" y1="160" x2="105" y2="160" stroke="rgba(110, 92, 255, 0.08)" strokeWidth="0.8" strokeDasharray="3 5" />
+              <line x1="55" y1="250" x2="105" y2="250" stroke="rgba(110, 92, 255, 0.12)" strokeWidth="0.8" strokeDasharray="3 5" />
+              <line x1="55" y1="340" x2="105" y2="340" stroke="rgba(110, 92, 255, 0.08)" strokeWidth="0.8" strokeDasharray="3 5" />
+
+              {/* Interactive GSAP Pulse Lines — horizontal bursts through center */}
               <path
                 className="circuit-pulse-line-left"
-                d="M 0 100 Q 50 100, 80 250"
+                d="M 10 250 Q 40 230, 80 250"
                 stroke="#3FE0C5"
-                strokeWidth="3.5"
+                strokeWidth="2.5"
+                fill="none"
                 filter="url(#neon-glow-cyan)"
-                strokeDasharray="180"
-                strokeDashoffset="180"
+                strokeDasharray="120"
+                strokeDashoffset="120"
               />
               <path
                 className="circuit-pulse-line-left"
-                d="M 0 400 Q 50 400, 80 250"
+                d="M 10 250 Q 40 270, 80 250"
                 stroke="#3FE0C5"
-                strokeWidth="3.5"
+                strokeWidth="2.5"
+                fill="none"
                 filter="url(#neon-glow-cyan)"
-                strokeDasharray="180"
-                strokeDashoffset="180"
+                strokeDasharray="120"
+                strokeDashoffset="120"
               />
 
               <path
                 className="circuit-pulse-line-right"
-                d="M 80 250 Q 110 250, 160 100"
+                d="M 80 250 Q 120 230, 150 250"
                 stroke="#FF7A45"
-                strokeWidth="3.5"
+                strokeWidth="2.5"
+                fill="none"
                 filter="url(#neon-glow-cyan)"
-                strokeDasharray="180"
-                strokeDashoffset="180"
+                strokeDasharray="120"
+                strokeDashoffset="120"
               />
               <path
                 className="circuit-pulse-line-right"
-                d="M 80 250 Q 110 250, 160 400"
+                d="M 80 250 Q 120 270, 150 250"
                 stroke="#FF7A45"
-                strokeWidth="3.5"
+                strokeWidth="2.5"
+                fill="none"
                 filter="url(#neon-glow-cyan)"
-                strokeDasharray="180"
-                strokeDashoffset="180"
+                strokeDasharray="120"
+                strokeDashoffset="120"
               />
 
-              {/* Central Holographic Quantum Core */}
+              {/* Central Nexus Node — hexagonal energy core */}
               <g transform="translate(80, 250)" className="reactor-core-group">
-                {/* Outer Glow Halo Ring */}
+                {/* Outer orbital particle ring */}
                 <circle
-                  r="34"
-                  fill="rgba(110, 92, 255, 0.08)"
-                  stroke="rgba(110, 92, 255, 0.3)"
-                  strokeWidth="1"
-                  strokeDasharray="4 8"
-                  className="animate-[spin_20s_linear_infinite]"
-                  style={{ transformOrigin: "0px 0px" }}
-                />
-                
-                {/* HUD Compass Ring */}
-                <circle
-                  r="24"
+                  r="28"
                   fill="none"
-                  stroke="#3FE0C5"
-                  strokeWidth="1.5"
-                  strokeDasharray="16 8"
-                  className="animate-[spin_10s_linear_infinite_reverse]"
-                  style={{ transformOrigin: "0px 0px" }}
-                />
-                
-                {/* Outer Flare Pulse Ring */}
-                <circle
-                  r="16"
-                  fill="none"
-                  stroke="#FF7A45"
-                  strokeWidth="1.2"
-                  strokeDasharray="8 4"
-                  className="animate-[spin_6s_linear_infinite]"
+                  stroke="rgba(110, 92, 255, 0.15)"
+                  strokeWidth="0.8"
+                  strokeDasharray="3 6"
+                  className="animate-[spin_25s_linear_infinite]"
                   style={{ transformOrigin: "0px 0px" }}
                 />
 
-                {/* Core Plasma Detonation Ring */}
+                {/* Hexagon outer frame */}
+                <polygon
+                  points="0,-20 17,-10 17,10 0,20 -17,10 -17,-10"
+                  fill="none"
+                  stroke="#6E5CFF"
+                  strokeWidth="1"
+                  opacity="0.4"
+                  className="animate-[spin_18s_linear_infinite_reverse]"
+                  style={{ transformOrigin: "0px 0px" }}
+                />
+
+                {/* Inner hexagon — counter spin */}
+                <polygon
+                  points="0,-12 10,-6 10,6 0,12 -10,6 -10,-6"
+                  fill="rgba(110, 92, 255, 0.06)"
+                  stroke="#3FE0C5"
+                  strokeWidth="0.8"
+                  opacity="0.5"
+                  className="animate-[spin_12s_linear_infinite]"
+                  style={{ transformOrigin: "0px 0px" }}
+                />
+
+                {/* Core plasma orb */}
                 <circle
                   className="reactor-inner-pulse"
-                  r="10"
-                  fill="url(#quantum-core-gradient)"
+                  r="7"
+                  fill="url(#nexus-core-grad)"
                   filter="url(#neon-glow-violet)"
                   style={{ transformOrigin: "0px 0px" }}
                 />
-                
-                {/* Core White Pulse Center */}
+
+                {/* Bright center dot */}
                 <circle
-                  r="4"
+                  r="2.5"
                   fill="#FFFFFF"
                   className="animate-pulse"
                   style={{ transformOrigin: "0px 0px" }}
                 />
               </g>
+
+              {/* Small floating data particles along the streams */}
+              <circle r="1.5" fill="#3FE0C5" opacity="0.6" filter="url(#soft-glow)">
+                <animateMotion
+                  dur="4s"
+                  repeatCount="indefinite"
+                  path="M 55 40 C 45 80, 65 120, 55 160 C 45 200, 65 240, 55 280 C 45 320, 65 360, 55 400"
+                />
+              </circle>
+              <circle r="1.5" fill="#FF7A45" opacity="0.6" filter="url(#soft-glow)">
+                <animateMotion
+                  dur="4.5s"
+                  repeatCount="indefinite"
+                  path="M 105 40 C 115 80, 95 120, 105 160 C 115 200, 95 240, 105 280 C 115 320, 95 360, 105 400"
+                />
+              </circle>
+              <circle r="1" fill="#6E5CFF" opacity="0.5" filter="url(#soft-glow)">
+                <animateMotion
+                  dur="5s"
+                  repeatCount="indefinite"
+                  path="M 80 30 L 80 470"
+                />
+              </circle>
             </svg>
           </div>
 

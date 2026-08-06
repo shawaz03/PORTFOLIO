@@ -307,3 +307,12 @@ html.lenis, html.lenis body {
     -webkit-mask-image: radial-gradient(circle 240px at 120% 50%, black 25%, transparent 100%);
   }
 }
+
+@keyframes waveflow {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -100;
+  }
+}
