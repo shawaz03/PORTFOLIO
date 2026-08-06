@@ -599,14 +599,14 @@ STATUS: UPLINKED SECURELY
             <div className="flex flex-col gap-8 z-10 text-left">
               <div>
                 <span className="font-mono text-[10px] text-ink/85 font-semibold tracking-[0.25em] uppercase">STEP_01 / SPECIFY_PROJECT</span>
-                <h3 className="font-hocus font-bold text-[24px] xs:text-[28px] md:text-3xl text-ink uppercase tracking-wide mt-1.5 drop-shadow-[0_0_12px_rgba(110,92,255,0.35)]">
+                <h3 className="font-display font-bold text-[24px] xs:text-[28px] md:text-3xl text-ink uppercase tracking-wide mt-1.5 drop-shadow-[0_0_12px_rgba(110,92,255,0.35)]">
                   CONFIGURING THE SCOPE
                 </h3>
               </div>
 
               {/* Service Selection */}
               <div className="flex flex-col gap-3">
-                <label className="font-disney text-base md:text-lg text-pulse font-bold tracking-wider flex items-center gap-2 drop-shadow-[0_0_8px_rgba(63,224,197,0.3)]">
+                <label className="font-display text-base md:text-lg text-pulse font-semibold tracking-wider flex items-center gap-2 drop-shadow-[0_0_8px_rgba(63,224,197,0.3)]">
                   <span>1. Select Intent Vector</span>
                 </label>
                 <div className="flex flex-wrap gap-2.5">
@@ -626,7 +626,7 @@ STATUS: UPLINKED SECURELY
                         key={s.id}
                         type="button"
                         onClick={() => handleServiceToggle(s.id)}
-                        className={`glass-shiny-pill px-4 py-2.5 rounded-xl border text-[13px] font-mermaid font-bold tracking-wider transition-all duration-300 cursor-pointer ${
+                        className={`glass-shiny-pill px-4 py-2.5 rounded-xl border text-[13px] font-sans font-semibold tracking-wider transition-all duration-300 cursor-pointer ${
                           active
                             ? "bg-signal/25 border-signal text-ink drop-shadow-[0_0_8px_rgba(110,92,255,0.3)]"
                             : "bg-void/50 border-white/10 text-dim/90 hover:text-white hover:border-white/20"
@@ -642,7 +642,7 @@ STATUS: UPLINKED SECURELY
               {/* Sci-Fi Power Level Budget Slider */}
               <div className="flex flex-col gap-3">
                 <div className="flex items-center justify-between">
-                  <label htmlFor="budget-range" className="font-disney text-base md:text-lg text-signal font-bold tracking-wider drop-shadow-[0_0_8px_rgba(110,92,255,0.3)] cursor-pointer">
+                  <label htmlFor="budget-range" className="font-display text-base md:text-lg text-signal font-semibold tracking-wider drop-shadow-[0_0_8px_rgba(110,92,255,0.3)] cursor-pointer">
                     <span>2. Budget Estimation</span>
                   </label>
                   <span 
@@ -682,7 +682,7 @@ STATUS: UPLINKED SECURELY
 
               {/* Urgency Selector */}
               <div className="flex flex-col gap-3">
-                <label className="font-disney text-base md:text-lg text-flare font-bold tracking-wider drop-shadow-[0_0_8px_rgba(255,122,69,0.3)]">
+                <label className="font-display text-base md:text-lg text-flare font-semibold tracking-wider drop-shadow-[0_0_8px_rgba(255,122,69,0.3)]">
                   <span>3. Deployment Timeline</span>
                 </label>
                 <div className="grid grid-cols-3 gap-2.5">
@@ -705,7 +705,7 @@ STATUS: UPLINKED SECURELY
                             : "bg-void/50 border-white/10 text-dim/90 hover:text-white hover:border-white/20"
                         }`}
                       >
-                        <span className="font-mermaid font-bold text-xs tracking-widest">{t.label}</span>
+                        <span className="font-sans font-bold text-xs tracking-wider">{t.label}</span>
                         <span className="font-mono text-[9px] text-dim/80">{t.desc}</span>
                       </button>
                     );
@@ -942,7 +942,7 @@ STATUS: UPLINKED SECURELY
               {/* Form header */}
               <div className="mb-2">
                 <span className="font-mono text-[10px] text-ink/85 font-semibold tracking-[0.25em] uppercase">STEP_02 / SECURE_UPLINK</span>
-                <h3 className="font-hocus font-bold text-[28px] md:text-3xl text-ink uppercase tracking-wide mt-1.5 drop-shadow-[0_0_12px_rgba(110,92,255,0.35)]">
+                <h3 className="font-display font-bold text-[28px] md:text-3xl text-ink uppercase tracking-wide mt-1.5 drop-shadow-[0_0_12px_rgba(110,92,255,0.35)]">
                   ESTABLISH CONNECTION
                 </h3>
               </div>
@@ -952,7 +952,7 @@ STATUS: UPLINKED SECURELY
                 
                 {/* Name */}
                 <div className="flex flex-col gap-1.5">
-                  <label htmlFor="user-name" className="font-disney text-sm md:text-base text-pulse font-bold tracking-wider uppercase drop-shadow-[0_0_8px_rgba(63,224,197,0.3)]">
+                  <label htmlFor="user-name" className="font-display text-sm md:text-base text-pulse font-semibold tracking-wider uppercase drop-shadow-[0_0_8px_rgba(63,224,197,0.3)]">
                     Sender Name
                   </label>
                   <input
@@ -962,13 +962,13 @@ STATUS: UPLINKED SECURELY
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Enter your name"
-                    className="w-full bg-[#07060c] border border-white/10 rounded-xl px-4 py-3 font-mermaid text-base md:text-[15px] text-white placeholder-white/35 focus:border-pulse focus:ring-1 focus:ring-pulse/30 focus:outline-none transition-all duration-300 shadow-inner"
+                    className="w-full bg-[#07060c] border border-white/10 rounded-xl px-4 py-3 font-sans text-base md:text-[15px] text-white placeholder-white/35 focus:border-pulse focus:ring-1 focus:ring-pulse/30 focus:outline-none transition-all duration-300 shadow-inner"
                   />
                 </div>
 
                 {/* Email */}
                 <div className="flex flex-col gap-1.5">
-                  <label htmlFor="user-email" className="font-disney text-sm md:text-base text-signal font-bold tracking-wider uppercase drop-shadow-[0_0_8px_rgba(110,92,255,0.3)]">
+                  <label htmlFor="user-email" className="font-display text-sm md:text-base text-signal font-semibold tracking-wider uppercase drop-shadow-[0_0_8px_rgba(110,92,255,0.3)]">
                     Signal Channel (Email)
                   </label>
                   <input
@@ -978,13 +978,13 @@ STATUS: UPLINKED SECURELY
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="name@company.com"
-                    className="w-full bg-[#07060c] border border-white/10 rounded-xl px-4 py-3 font-mermaid text-base md:text-[15px] text-white placeholder-white/35 focus:border-signal focus:ring-1 focus:ring-signal/30 focus:outline-none transition-all duration-300 shadow-inner"
+                    className="w-full bg-[#07060c] border border-white/10 rounded-xl px-4 py-3 font-sans text-base md:text-[15px] text-white placeholder-white/35 focus:border-signal focus:ring-1 focus:ring-signal/30 focus:outline-none transition-all duration-300 shadow-inner"
                   />
                 </div>
 
                 {/* Message */}
                 <div className="flex flex-col gap-1.5">
-                  <label htmlFor="user-message" className="font-disney text-sm md:text-base text-flare font-bold tracking-wider uppercase drop-shadow-[0_0_8px_rgba(255,122,69,0.3)]">
+                  <label htmlFor="user-message" className="font-display text-sm md:text-base text-flare font-semibold tracking-wider uppercase drop-shadow-[0_0_8px_rgba(255,122,69,0.3)]">
                     Transmission Content (Optional)
                   </label>
                   <textarea
@@ -993,7 +993,7 @@ STATUS: UPLINKED SECURELY
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     placeholder="Describe your project goals, timelines, or just say hello..."
-                    className="w-full bg-[#07060c] border border-white/10 rounded-xl px-4 py-3 font-mermaid text-base md:text-[15px] text-white placeholder-white/35 focus:border-flare focus:ring-1 focus:ring-flare/30 focus:outline-none transition-all duration-300 resize-none shadow-inner"
+                    className="w-full bg-[#07060c] border border-white/10 rounded-xl px-4 py-3 font-sans text-base md:text-[15px] text-white placeholder-white/35 focus:border-flare focus:ring-1 focus:ring-flare/30 focus:outline-none transition-all duration-300 resize-none shadow-inner"
                   />
                 </div>
 
@@ -1003,7 +1003,7 @@ STATUS: UPLINKED SECURELY
               <button
                 type="submit"
                 disabled={status !== "idle"}
-                className={`glass-shiny-pill w-full py-4 mt-4 rounded-xl font-mermaid font-bold text-base tracking-widest flex items-center justify-center gap-2 border transition-all duration-350 select-none ${
+                className={`glass-shiny-pill w-full py-4 mt-4 rounded-xl font-display font-bold text-base tracking-widest flex items-center justify-center gap-2 border transition-all duration-350 select-none ${
                   status === "idle"
                     ? "bg-signal text-ink border-signal/40 shadow-lg shadow-signal/20 cursor-pointer active:scale-[0.98]"
                     : "bg-void/50 border-white/10 text-dim/95 cursor-not-allowed"
@@ -1062,8 +1062,8 @@ STATUS: UPLINKED SECURELY
                         <div className="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-[#3FE0C5]" />
 
                         <div className="flex items-center justify-between border-b border-white/10 pb-2.5 mb-4">
-                          <span className="text-xs md:text-sm text-white/50 uppercase tracking-widest font-frozen">UPLINK TRANSMISSION PASS</span>
-                          <span className="text-sm md:text-base text-[#3FE0C5] font-bold font-frozen">
+                          <span className="text-xs md:text-sm text-white/50 uppercase tracking-widest font-mono">UPLINK TRANSMISSION PASS</span>
+                          <span className="text-sm md:text-base text-[#3FE0C5] font-bold font-mono">
                             {getTransmissionCode(name)}
                           </span>
                         </div>
@@ -1071,18 +1071,18 @@ STATUS: UPLINKED SECURELY
                         {/* Scoping details */}
                         <div className="flex flex-col gap-3.5 text-xs text-white/90">
                           <div>
-                            <span className="text-white/50 text-[11px] md:text-xs block uppercase font-frozen tracking-wider">Recipient</span>
-                            <span className="font-medium text-white font-mermaid text-lg md:text-xl block leading-tight mt-1">{emailAddress}</span>
+                            <span className="text-white/50 text-[11px] md:text-xs block uppercase font-mono tracking-wider">Recipient</span>
+                            <span className="font-medium text-white font-sans text-lg md:text-xl block leading-tight mt-1">{emailAddress}</span>
                           </div>
                           <div>
-                            <span className="text-white/50 text-[11px] md:text-xs block uppercase font-frozen tracking-wider">Sender</span>
-                            <span className="font-medium text-white font-mermaid text-lg md:text-xl block leading-tight mt-1 truncate">
+                            <span className="text-white/50 text-[11px] md:text-xs block uppercase font-mono tracking-wider">Sender</span>
+                            <span className="font-medium text-white font-sans text-lg md:text-xl block leading-tight mt-1 truncate">
                               {name} &lt;{email}&gt;
                             </span>
                           </div>
                           <div>
-                            <span className="text-white/50 text-[11px] md:text-xs block uppercase font-frozen tracking-wider">Project Vectors</span>
-                            <span className="font-medium text-[#3FE0C5] font-mermaid text-base md:text-lg block leading-tight mt-1 break-words">
+                            <span className="text-white/50 text-[11px] md:text-xs block uppercase font-mono tracking-wider">Project Vectors</span>
+                            <span className="font-medium text-[#3FE0C5] font-sans text-base md:text-lg block leading-tight mt-1 break-words">
                               {selectedServices.map(s => {
                                 const labels: Record<ProjectType, string> = {
                                   fullstack: "Full-Stack Applications",
@@ -1098,15 +1098,15 @@ STATUS: UPLINKED SECURELY
                           </div>
                           <div className="grid grid-cols-2 gap-4">
                             <div>
-                              <span className="text-white/50 text-[11px] md:text-xs block uppercase font-frozen tracking-wider">Timeline Priority</span>
-                              <span className="font-medium text-[#FF7A45] font-mermaid text-base md:text-lg block leading-tight mt-1">
+                              <span className="text-white/50 text-[11px] md:text-xs block uppercase font-mono tracking-wider">Timeline Priority</span>
+                              <span className="font-medium text-[#FF7A45] font-sans text-base md:text-lg block leading-tight mt-1">
                                 {timeline === "fast" ? "URGENT (< 1 Mo)" : timeline === "normal" ? "STANDARD (1-3 Mo)" : "FLEXIBLE (3+ Mo)"}
                               </span>
                             </div>
                             <div>
-                              <span className="text-white/50 text-[11px] md:text-xs block uppercase font-frozen tracking-wider">Est. Budget Range</span>
-                              <span className="font-medium text-[#6E5CFF] font-mermaid text-lg md:text-xl block leading-tight mt-1">
-                                ${budget}K - ${budget + 5}K USD
+                              <span className="text-white/50 text-[11px] md:text-xs block uppercase font-mono tracking-wider">Est. Budget Range</span>
+                              <span className="font-medium text-[#6E5CFF] font-sans text-lg md:text-xl block leading-tight mt-1">
+                                ₹{budget}K - ₹{budget + 5}K INR
                               </span>
                             </div>
                           </div>
@@ -1114,7 +1114,7 @@ STATUS: UPLINKED SECURELY
 
                         {/* Barcode scan layout */}
                         <div className="mt-5 border-t border-white/5 pt-4">
-                          <span className="text-white/30 text-[9px] md:text-[10px] block uppercase text-center mb-2 font-frozen tracking-wider">SECURE PACKET SIGNATURE</span>
+                          <span className="text-white/30 text-[9px] md:text-[10px] block uppercase text-center mb-2 font-mono tracking-wider">SECURE PACKET SIGNATURE</span>
                           <div className="relative w-full h-8 bg-void/50 border border-white/5 rounded overflow-hidden flex items-center justify-center">
                             <svg className="w-11/12 h-5 opacity-60" viewBox="0 0 100 20" preserveAspectRatio="none">
                               <rect x="1" width="1" height="20" fill="#3FE0C5" />
