@@ -468,29 +468,22 @@ export default function Contact() {
       }, (index + 1) * 450);
     });
 
-    // Send real email directly to shawazstar@gmail.com
+    // Send real email directly via Nodemailer Gmail SMTP endpoint
     try {
-      await fetch("https://formsubmit.co/ajax/shawazstar@gmail.com", {
+      await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json",
         },
         body: JSON.stringify({
-          _subject: `🚀 Portfolio Project Inquiry from ${name}`,
-          _template: "table",
-          _captcha: "false",
-          _replyto: email,
-          email: email,
-          _autoresponse: `Greetings ${name}! 🚀\n\nThank you for reaching out via my portfolio collaboration portal!\n\nYour Transmission Pass [${getTransmissionCode(name)}] has been successfully generated and delivered. Here is a summary of your inquiry:\n\n• Services: ${selectedServiceNames}\n• Est. Budget: ${budgetRangeStr}\n• Timeline: ${timelineStr}\n\nI have received your requirements and will review them shortly. Expect a response soon!\n\nBest regards,\nShawaz J.\nshawazstar@gmail.com`,
-          "Sender Name": name,
-          "Sender Email": email,
-          "Services Selected": selectedServiceNames,
-          "Estimated Budget": budgetRangeStr,
-          "Timeline": timelineStr,
-          "Message": message || "No custom message provided.",
-          "Transmission ID": getTransmissionCode(name),
-          "Timestamp": new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })
+          name,
+          email,
+          services: selectedServices,
+          serviceNames: selectedServiceNames,
+          budget,
+          timeline,
+          message,
+          transmissionCode: getTransmissionCode(name),
         }),
       });
     } catch (err) {
