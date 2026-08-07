@@ -1106,7 +1106,7 @@ STATUS: UPLINKED SECURELY
                             <div>
                               <span className="text-white/50 text-[11px] md:text-xs block uppercase font-frozen tracking-wider">Est. Budget Range</span>
                               <span className="font-medium text-[#6E5CFF] font-mermaid text-lg md:text-xl block leading-tight mt-1">
-                                ${budget}K - ${budget + 5}K USD
+                                ₹{budget}K - ₹{budget + 5}K INR
                               </span>
                             </div>
                           </div>

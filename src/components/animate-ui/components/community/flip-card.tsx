@@ -417,7 +417,7 @@ export const FlipCard: React.FC<FlipCardProps> = ({ data }) => {
         }
       },
       scrollCollaborations: {
-        cmd: "scroll --collaborations",
+        cmd: "scroll --collaboration",
         output: [
           "[SYSTEM_REDIRECT] Locating Collaborations section...",
           "Initiating viewport scrolling override..."
@@ -758,7 +758,7 @@ export const FlipCard: React.FC<FlipCardProps> = ({ data }) => {
               }}
               className="bg-green-950/20 hover:bg-green-950/40 border border-green-500/30 hover:border-green-500/60 text-green-400 text-[10px] sm:text-xs px-2.5 py-1.5 rounded-md font-mono transition-all duration-200 shadow-sm shadow-green-500/5 cursor-pointer uppercase tracking-wider"
             >
-              scroll --collaborations
+              scroll --collaboration
             </button>
           </div>
         </div>
