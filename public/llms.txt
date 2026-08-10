@@ -1,0 +1,28 @@
+# J. Shawaz - Full-Stack Developer & Interactive Web Engineer
+
+> Official Portfolio: https://shawaz.vercel.app  
+> GitHub: https://github.com/shawaz03  
+> LinkedIn: https://www.linkedin.com/in/shawaz-j-979114302/  
+> Contact Email: contact.shawaz@gmail.com  
+
+## Summary
+J. Shawaz is a Full-Stack Developer and Interactive Web Engineer specializing in building modern, high-performance web applications, 3D WebGL experiences, and smooth animated interfaces. He works extensively with Next.js, React, TypeScript, Tailwind CSS, Three.js, React Three Fiber, GSAP, and Framer Motion.
+
+## Core Technical Skills
+- **Frontend & Frameworks**: Next.js (App Router), React 19, TypeScript, JavaScript (ES6+), HTML5, CSS3
+- **Styling & Design Systems**: Tailwind CSS, CSS Modules, Responsive Design, Glassmorphic & Modern UI
+- **Animations & 3D**: Three.js, React Three Fiber (@react-three/fiber, @react-three/drei), GSAP, Framer Motion, Lenis Smooth Scroll
+- **Backend & APIs**: Node.js, Express, REST APIs, Nodemailer, Server Actions
+- **Tools & Platforms**: Git, GitHub, Vercel, npm, ESLint, PostCSS
+
+## Services Offered
+- Full-Stack Web Application Engineering
+- Custom Interactive 3D & WebGL Website Experiences
+- Performant Motion Design & UI Animation Systems
+- Web Performance Optimization & Next.js Architecture
+
+## Key Links & Resources
+- [Portfolio Website](https://shawaz.vercel.app): Interactive developer console & project showcase
+- [Full Reference (`llms-full.txt`)](https://shawaz.vercel.app/llms-full.txt): Comprehensive project architecture details and resume highlights
+- [GitHub Profile](https://github.com/shawaz03): Source repositories and open-source work
+- [LinkedIn Profile](https://www.linkedin.com/in/shawaz-j-979114302/): Professional history and credentials

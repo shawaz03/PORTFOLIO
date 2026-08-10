@@ -91,10 +91,10 @@ export default function RootLayout({
         "@type": "Person",
         "@id": `${SITE_URL}/#person`,
         name: "J. Shawaz",
-        alternateName: ["Shawaz", "Shawaz Developer", "Shawaz Portfolio"],
-        jobTitle: "Full-Stack Developer",
+        alternateName: ["Shawaz", "Shawaz Developer", "Shawaz Portfolio", "J Shawaz"],
+        jobTitle: "Full-Stack Developer & Interactive Web Engineer",
         description:
-          "Full-Stack Developer passionate about crafting immersive, high-performance web experiences.",
+          "Full-Stack Developer & Interactive Web Engineer specializing in crafting modern, performant web applications with Next.js, React, TypeScript, Three.js, and GSAP animations.",
         url: SITE_URL,
         image: `${SITE_URL}/profile.jpeg`,
         sameAs: [
@@ -108,21 +108,113 @@ export default function RootLayout({
           "Next.js",
           "TypeScript",
           "Full-Stack Development",
-          "GSAP",
+          "GSAP Animations",
           "Three.js",
+          "React Three Fiber",
           "Tailwind CSS",
+          "Node.js",
+          "REST APIs",
+          "Web Performance & SEO",
         ],
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: "Engineering & Technical Services",
+          itemListElement: [
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: "Full-Stack Web Application Development",
+                description:
+                  "Building custom, performant, and scalable web applications using Next.js, React, TypeScript, and Node.js.",
+              },
+            },
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: "Interactive 3D & WebGL Experiences",
+                description:
+                  "Crafting immersive 3D graphics and interactive web canvas visuals with Three.js and React Three Fiber.",
+              },
+            },
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: "Performant UI Animation & Motion Systems",
+                description:
+                  "Implementing responsive micro-interactions, smooth scroll, and complex sequence animations using GSAP and Framer Motion.",
+              },
+            },
+          ],
+        },
       },
       {
         "@type": "WebSite",
         "@id": `${SITE_URL}/#website`,
         url: SITE_URL,
         name: "Shawaz Portfolio",
-        description: "Official Portfolio of J. Shawaz - Full-Stack Developer",
+        description: "Official Portfolio of J. Shawaz - Full-Stack Developer & Interactive Web Engineer",
         publisher: {
           "@id": `${SITE_URL}/#person`,
         },
         inLanguage: "en-US",
+      },
+      {
+        "@type": "ProfilePage",
+        "@id": `${SITE_URL}/#profilepage`,
+        url: SITE_URL,
+        name: "J. Shawaz - Developer Profile & Showcase",
+        mainEntity: {
+          "@id": `${SITE_URL}/#person`,
+        },
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `${SITE_URL}/#faq`,
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: "Who is J. Shawaz?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "J. Shawaz is a Full-Stack Developer and Interactive Web Engineer specializing in Next.js, React, TypeScript, Three.js, and GSAP animations.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "What is Shawaz's official portfolio website?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "The official portfolio of J. Shawaz is located at https://shawaz.vercel.app.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "What technologies does Shawaz specialize in?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Shawaz specializes in Next.js (App Router), React 19, TypeScript, Tailwind CSS, Three.js, React Three Fiber, GSAP, Framer Motion, Lenis, and Node.js backend integration.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Is Shawaz available for freelance or full-time roles?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Yes, Shawaz is open for freelance web engineering projects, technical contracts, and full-time software developer opportunities.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "How can I contact Shawaz for projects or hiring?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "You can reach out to Shawaz directly via the contact section on his portfolio (https://shawaz.vercel.app), LinkedIn (https://www.linkedin.com/in/shawaz-j-979114302/), or GitHub (https://github.com/shawaz03).",
+            },
+          },
+        ],
       },
     ],
   };
