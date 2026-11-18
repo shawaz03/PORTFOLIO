@@ -22,12 +22,13 @@ J. Shawaz is a Full-Stack Developer and Interactive Web Engineer specializing in
 - Web Performance Optimization & Next.js Architecture
 
 ## Key Projects
-- **RAIZEN 7.61B**: Enterprise AI Coding Intelligence & Developer Studio fine-tuned from Qwen2.5-Coder-7B across 15,000 multi-turn samples on 4× NVIDIA A10G GPUs. Features real-time SSE streaming, Chat Studio, Model Explorer, and Snippet Vault. Model release on Hugging Face (shawaz03/RAIZEN), repo at github.com/shawaz03/N-14.
-- **Campus Rides**: Full-stack student ride-sharing platform with real-time location tracking, interactive Maplibre GL map interfaces, React Query syncing, Supabase backend, and emergency SOS services.
+- **RAIZEN Studio**: AI Coding Studio paired with a fine-tuned 7.61B foundation model. Features on-demand Google Colab GPU runtime streamed via HTTP / Cloudflare tunneling with real-time SSE token streaming, Chat Studio, Model Explorer, and Snippet Vault. Live web interface at https://raizen-studio.vercel.app/, Hugging Face model at shawaz03/RAIZEN, repo at github.com/shawaz03/N-14.
+- **Campus Rides**: Full-stack student ride-sharing platform with real-time location tracking, interactive Maplibre GL map interfaces, React Query syncing, Supabase backend, and emergency SOS services. Live at https://campusrides-nu.vercel.app/.
 - **Interactive Developer Console**: 3D portfolio powered by Next.js, React Three Fiber, GSAP, and Tailwind CSS.
 
 ## Key Links & Resources
 - [Portfolio Website](https://shawaz.vercel.app): Interactive developer console & project showcase
+- [RAIZEN Studio](https://raizen-studio.vercel.app/): Live AI Coding Studio interface
 - [Hugging Face](https://huggingface.co/shawaz03/RAIZEN): RAIZEN 7.61B open-source AI model
 - [Full Reference (`llms-full.txt`)](https://shawaz.vercel.app/llms-full.txt): Comprehensive project architecture details and resume highlights
 - [GitHub Profile](https://github.com/shawaz03): Source repositories and open-source work

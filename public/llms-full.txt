@@ -38,11 +38,12 @@ This document provides complete technical reference details for J. Shawaz, a Ful
 
 ## Featured Engineering Projects
 
-### 1. RAIZEN 7.61B — Enterprise AI Coding Intelligence & Studio
+### 1. RAIZEN Studio — Fine-Tuned AI Coding Assistant & Interface
 - **Architecture**: 7.61 Billion Parameter coding foundation model fine-tuned from `Qwen2.5-Coder-7B-Instruct` on 4× NVIDIA A10G GPUs (`g5.12xlarge`).
-- **Dataset**: 15,000 curated multi-turn ChatML Golden Dataset records across 5 core pillars (Full-stack architecture, algorithms, security refactoring, multi-file engineering, and chain-of-thought reasoning).
-- **Studio Interface**: Next.js 14 Swiss-precision developer interface featuring real-time SSE token streaming, Chat Studio, Model Explorer, and local Snippet Vault.
-- **Links**: [Hugging Face Model](https://huggingface.co/shawaz03/RAIZEN) | [GitHub Repository](https://github.com/shawaz03/N-14)
+- **GPU Engine & HTTP Tunneling**: On-demand Google Colab GPU runtime (Tesla T4) connected via secure HTTP / Cloudflare tunneling with high-throughput vLLM PagedAttention and SSE token streaming.
+- **Dataset**: 15,000 curated multi-turn ChatML Golden Dataset records across 5 core pillars.
+- **Studio Interface**: Next.js 14 Swiss-precision developer interface featuring real-time SSE streaming, Chat Studio, Model Explorer, and local Snippet Vault.
+- **Links**: [Live Studio Interface](https://raizen-studio.vercel.app/) | [Hugging Face Model](https://huggingface.co/shawaz03/RAIZEN) | [GitHub Repository](https://github.com/shawaz03/N-14)
 
 ### 2. Campus Rides — Student Mobility Platform
 - **Architecture**: Full-stack Next.js and Supabase application connecting campus student riders with drivers.

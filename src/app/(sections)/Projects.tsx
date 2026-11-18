@@ -6,7 +6,8 @@ import { ExternalLink, ChevronLeft, ChevronRight, Terminal, Cpu, Database, Layer
 import SectionHeader from "@/components/ui/SectionHeader";
 
 export default function Projects() {
-  const [isInteractive, setIsInteractive] = useState(false);
+  const [interactivePanel, setInteractivePanel] = useState<1 | 2 | null>(null);
+  const isInteractive = interactivePanel !== null;
   const [glowPos, setGlowPos] = useState({ x: 0, y: 0 });
   const [showGlow, setShowGlow] = useState(false);
 
@@ -223,7 +224,7 @@ export default function Projects() {
 
                   {/* Sandbox Frame */}
                   <div className="flex-1 w-full relative bg-[#1E1E24]">
-                    {isInteractive ? (
+                    {interactivePanel === 1 ? (
                       <iframe 
                         src="https://campusrides-nu.vercel.app/" 
                         className="w-full h-full border-none bg-void/95 pointer-events-auto"
@@ -236,9 +237,9 @@ export default function Projects() {
                         className="w-full h-full object-cover opacity-80"
                       />
                     )}
-                    {!isInteractive && (
+                    {interactivePanel !== 1 && (
                       <div 
-                        onClick={(e) => { e.stopPropagation(); setIsInteractive(true); }}
+                        onClick={(e) => { e.stopPropagation(); setInteractivePanel(1); }}
                         className="absolute inset-0 bg-void/50 backdrop-blur-[1px] hover:bg-void/40 flex items-center justify-center pointer-events-auto z-10"
                       >
                         <button className="bg-signal/20 hover:bg-signal/30 border border-signal/45 text-ink text-[10px] font-mono uppercase tracking-wider px-4 py-2 rounded-lg cursor-pointer">
@@ -246,9 +247,9 @@ export default function Projects() {
                         </button>
                       </div>
                     )}
-                    {isInteractive && (
+                    {interactivePanel === 1 && (
                       <button 
-                        onClick={(e) => { e.stopPropagation(); setIsInteractive(false); }}
+                        onClick={(e) => { e.stopPropagation(); setInteractivePanel(null); }}
                         className="absolute bottom-3 right-3 bg-red-950/80 border border-red-500/40 text-red-200 text-[9px] font-mono px-2 py-0.5 rounded cursor-pointer z-30"
                       >
                         Exit Live Sandbox
@@ -283,7 +284,7 @@ export default function Projects() {
                     {/* Actions links */}
                     <div className="flex items-center gap-2.5">
                       <a 
-                        href="https://huggingface.co/shawaz03/RAIZEN" 
+                        href="https://raizen-studio.vercel.app/" 
                         target="_blank" 
                         rel="noreferrer" 
                         onClick={(e) => e.stopPropagation()}
@@ -293,7 +294,7 @@ export default function Projects() {
                         }}
                       >
                         <ExternalLink className="w-3 h-3 text-[#B5A9FF]" />
-                        <span>Hugging Face</span>
+                        <span>Live</span>
                       </a>
                       <a 
                         href="https://github.com/shawaz03/N-14" 
@@ -310,13 +311,39 @@ export default function Projects() {
                     </div>
                   </div>
 
-                  {/* RAIZEN Preview Image */}
+                  {/* Sandbox Frame */}
                   <div className="flex-1 w-full relative bg-[#1E1E24]">
-                    <img 
-                      src="/raizen.png" 
-                      alt="RAIZEN AI Coding Assistant Preview" 
-                      className="w-full h-full object-cover opacity-80"
-                    />
+                    {interactivePanel === 2 ? (
+                      <iframe 
+                        src="https://raizen-studio.vercel.app/" 
+                        className="w-full h-full border-none bg-void/95 pointer-events-auto"
+                        title="RAIZEN Studio Live App Frame"
+                      />
+                    ) : (
+                      <img 
+                        src="/raizen.png" 
+                        alt="RAIZEN AI Coding Assistant Preview" 
+                        className="w-full h-full object-cover opacity-80"
+                      />
+                    )}
+                    {interactivePanel !== 2 && (
+                      <div 
+                        onClick={(e) => { e.stopPropagation(); setInteractivePanel(2); }}
+                        className="absolute inset-0 bg-void/50 backdrop-blur-[1px] hover:bg-void/40 flex items-center justify-center pointer-events-auto z-10"
+                      >
+                        <button className="bg-signal/20 hover:bg-signal/30 border border-signal/45 text-ink text-[10px] font-mono uppercase tracking-wider px-4 py-2 rounded-lg cursor-pointer">
+                          Click to Interact Live
+                        </button>
+                      </div>
+                    )}
+                    {interactivePanel === 2 && (
+                      <button 
+                        onClick={(e) => { e.stopPropagation(); setInteractivePanel(null); }}
+                        className="absolute bottom-3 right-3 bg-red-950/80 border border-red-500/40 text-red-200 text-[9px] font-mono px-2 py-0.5 rounded cursor-pointer z-30"
+                      >
+                        Exit Live Sandbox
+                      </button>
+                    )}
                   </div>
                 </div>
 
@@ -395,11 +422,11 @@ export default function Projects() {
                 <div className="flex flex-col gap-5 h-full justify-between">
                   <div className="flex flex-col gap-1.5">
                     <span className="font-mono text-[9px] text-[#6E5CFF] tracking-[0.25em] uppercase">
-                      CLASSIFICATION: AI_INTELLIGENCE
+                      CLASSIFICATION: AI_CODING_STUDIO
                     </span>
                     {/* Title stays Orange (text-flare) */}
                     <h3 className="font-frozen font-bold text-3xl text-flare uppercase tracking-wide">
-                      RAIZEN 7.61B
+                      RAIZEN STUDIO
                     </h3>
                   </div>
 
@@ -407,30 +434,30 @@ export default function Projects() {
                   <div className="grid grid-cols-2 gap-3.5 font-mermaid text-base border border-white/5 bg-void/30 p-3.5 rounded-xl text-white">
                     <div className="flex items-center gap-2">
                       <Brain className="w-3.5 h-3.5 text-signal" />
-                      <span>CLASS: AI CODING IDE</span>
+                      <span>MODEL: FINE-TUNED 7.61B</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Terminal className="w-3.5 h-3.5 text-signal" />
+                      <span>INTERFACE: CHAT STUDIO</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Cpu className="w-3.5 h-3.5 text-signal" />
-                      <span>BASE: QWEN 2.5 CODER</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Database className="w-3.5 h-3.5 text-signal" />
-                      <span>DATA: 15K GOLDEN SET</span>
+                      <span>BACKEND: COLAB GPU (T4)</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Layers className="w-3.5 h-3.5 text-signal" />
-                      <span>NODE: 4× A10G / T4 GPU</span>
+                      <span>TUNNEL: HTTP / SSE TUNNEL</span>
                     </div>
                   </div>
 
                   {/* Description copy */}
                   <p className="font-mermaid text-lg text-white leading-relaxed text-justify">
-                    An enterprise-grade 7.61B parameter coding foundation model and Swiss-precision developer studio. Fine-tuned from Qwen2.5-Coder-7B over 15,000 multi-turn records on 4× NVIDIA A10G GPUs. Features real-time SSE token streaming, Chat Studio, Model Explorer, and local Snippet Vault.
+                    A fine-tuned 7.61B coding foundation model paired with an interactive Next.js chat studio interface. Connected to an on-demand Google Colab GPU runtime via secure HTTP / Cloudflare tunneling with high-throughput real-time SSE token streaming, syntax highlighting, and an integrated Snippet Vault.
                   </p>
 
                   {/* Tech stack badges */}
                   <div className="flex flex-wrap gap-1.5">
-                    {["PyTorch DDP", "QLoRA", "Hugging Face", "vLLM", "Next.js 14", "FastAPI"].map((tech) => (
+                    {["Fine-Tuned 7.61B", "Chat Studio", "Colab GPU", "HTTP Tunneling", "SSE Streaming", "Next.js 14"].map((tech) => (
                       <span 
                         key={tech}
                         className="glass-shiny-pill font-mono text-[9.5px] backdrop-blur-[6px] border border-signal/30 text-[#B5A9FF] px-2.5 py-1 rounded shadow-[0_4px_12px_rgba(0,0,0,0.15)] transition-all duration-200 hover:border-signal/50"
