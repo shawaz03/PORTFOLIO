@@ -360,14 +360,14 @@ export default function Projects() {
             </button>
           </div>
 
-          {/* RIGHT: Dynamic Dossier Board (Balanced Height matching Carousel: xl:h-[520px]) */}
+          {/* RIGHT: Dynamic Dossier Board (Natural Auto-Height to cleanly contain all content & badges) */}
           <div className="xl:col-span-4 w-full flex flex-col gap-6 justify-center z-20">
             <div 
-              className="w-full border border-white/5 bg-[#0E0C16]/50 rounded-2xl p-6 sm:p-7 shadow-xl transition-all duration-500 ease-in-out text-left min-h-[480px] xl:h-[520px] flex flex-col justify-between"
+              className="w-full border border-white/10 bg-[#0E0C16]/80 rounded-2xl p-5 sm:p-7 shadow-2xl transition-all duration-500 ease-in-out text-left flex flex-col"
               style={{ opacity: textOpacity, transform: `translateY(${(1 - textOpacity) * 8}px)` }}
             >
               {activePanel === 1 ? (
-                <div className="flex flex-col gap-4 sm:gap-5 h-full justify-between">
+                <div className="flex flex-col gap-4 sm:gap-5">
                   <div className="flex flex-col gap-1.5">
                     <span className="font-mono text-[9px] text-[#3FE0C5] tracking-[0.25em] uppercase">
                       CLASSIFICATION: RIDE_PLATFORM
@@ -379,7 +379,7 @@ export default function Projects() {
                   </div>
 
                   {/* Specs Grid */}
-                  <div className="grid grid-cols-2 gap-2.5 sm:gap-3.5 font-mermaid text-sm sm:text-base border border-white/5 bg-void/30 p-3 sm:p-3.5 rounded-xl text-white">
+                  <div className="grid grid-cols-2 gap-2 sm:gap-3 font-mermaid text-xs sm:text-sm md:text-base border border-white/5 bg-void/30 p-3 sm:p-3.5 rounded-xl text-white">
                     <div className="flex items-center gap-2">
                       <Terminal className="w-3.5 h-3.5 text-signal shrink-0" />
                       <span className="truncate">CLASS: STUDENT_UTILITY</span>
@@ -399,7 +399,7 @@ export default function Projects() {
                   </div>
 
                   {/* Description copy */}
-                  <p className="font-mermaid text-base sm:text-lg text-white/95 leading-relaxed text-justify">
+                  <p className="font-mermaid text-sm sm:text-base md:text-[17px] text-white/90 leading-relaxed text-justify">
                     A student-focused, doodle-styled ride booking application connecting student riders and drivers. Built with real-time location tracking, interactive Maplibre GL map interfaces, React Query status syncing, and integrated student SOS emergency services.
                   </p>
 
@@ -419,7 +419,7 @@ export default function Projects() {
                   </div>
                 </div>
               ) : (
-                <div className="flex flex-col gap-4 sm:gap-5 h-full justify-between">
+                <div className="flex flex-col gap-4 sm:gap-5">
                   <div className="flex flex-col gap-1.5">
                     <span className="font-mono text-[9px] text-[#6E5CFF] tracking-[0.25em] uppercase">
                       CLASSIFICATION: AI_CODING_STUDIO
@@ -431,7 +431,7 @@ export default function Projects() {
                   </div>
 
                   {/* Specs Grid */}
-                  <div className="grid grid-cols-2 gap-2.5 sm:gap-3.5 font-mermaid text-sm sm:text-base border border-white/5 bg-void/30 p-3 sm:p-3.5 rounded-xl text-white">
+                  <div className="grid grid-cols-2 gap-2 sm:gap-3 font-mermaid text-xs sm:text-sm md:text-base border border-white/5 bg-void/30 p-3 sm:p-3.5 rounded-xl text-white">
                     <div className="flex items-center gap-2">
                       <Brain className="w-3.5 h-3.5 text-signal shrink-0" />
                       <span className="truncate">MODEL: FINE-TUNED 7.61B</span>
@@ -451,7 +451,7 @@ export default function Projects() {
                   </div>
 
                   {/* Description copy */}
-                  <p className="font-mermaid text-base sm:text-lg text-white/95 leading-relaxed text-justify">
+                  <p className="font-mermaid text-sm sm:text-base md:text-[17px] text-white/90 leading-relaxed text-justify">
                     A fine-tuned 7.61B coding foundation model paired with an interactive Next.js chat studio interface. Connected to an on-demand Google Colab GPU runtime via secure HTTP / Cloudflare tunneling with high-throughput real-time SSE token streaming, syntax highlighting, and an integrated Snippet Vault.
                   </p>
 
