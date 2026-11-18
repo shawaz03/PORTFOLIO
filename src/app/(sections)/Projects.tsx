@@ -2,83 +2,13 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
-import { ExternalLink, ChevronLeft, ChevronRight, Terminal, Cpu, Database, Layers } from "lucide-react";
+import { ExternalLink, ChevronLeft, ChevronRight, Terminal, Cpu, Database, Layers, Brain } from "lucide-react";
 import SectionHeader from "@/components/ui/SectionHeader";
 
 export default function Projects() {
   const [isInteractive, setIsInteractive] = useState(false);
   const [glowPos, setGlowPos] = useState({ x: 0, y: 0 });
   const [showGlow, setShowGlow] = useState(false);
-
-  // Coming Soon typing terminal simulation
-  const [terminalLogs, setTerminalLogs] = useState<string[]>([]);
-  const [activeLog, setActiveLog] = useState("");
-  const logsSequence = [
-    { text: "shawaz:~$ mkdir next_masterpiece", type: true },
-    { text: "[OK] Creating repository folder...", type: false },
-    { text: "[OK] Structuring atomic UI layout...", type: false },
-    { text: "[WARN] Awaiting user instructions...", type: false },
-    { text: "shawaz:~$ ", type: false }
-  ];
-
-  useEffect(() => {
-    let timers: NodeJS.Timeout[] = [];
-    let isCancelled = false;
-
-    const runLogs = async () => {
-      setTerminalLogs([]);
-      setActiveLog("");
-
-      for (const step of logsSequence) {
-        if (isCancelled) break;
-        if (step.type) {
-          await new Promise<void>((resolve) => {
-            let i = 0;
-            let current = "";
-            const interval = setInterval(() => {
-              if (isCancelled) {
-                clearInterval(interval);
-                resolve();
-                return;
-              }
-              current += step.text.charAt(i);
-              setActiveLog(current);
-              i++;
-              if (i >= step.text.length) {
-                clearInterval(interval);
-                setTerminalLogs(prev => [...prev, step.text]);
-                setActiveLog("");
-                resolve();
-              }
-            }, 30);
-          });
-        } else {
-          await new Promise<void>((resolve) => {
-            const timer = setTimeout(() => {
-              if (isCancelled) {
-                resolve();
-                return;
-              }
-              setTerminalLogs(prev => [...prev, step.text]);
-              resolve();
-            }, 250);
-            timers.push(timer);
-          });
-        }
-      }
-    };
-
-    runLogs();
-    const mainInterval = setInterval(() => {
-      if (!isCancelled) runLogs();
-    }, 7000);
-
-    return () => {
-      isCancelled = true;
-      clearInterval(mainInterval);
-      timers.forEach(t => clearTimeout(t));
-    };
-  }, []);
 
   // Carousel States & Refs
   const carouselContainerRef = useRef<HTMLDivElement>(null);
@@ -327,10 +257,10 @@ export default function Projects() {
                   </div>
                 </div>
 
-                {/* Panel 2: Coming Soon */}
+                {/* Panel 2: RAIZEN - AI Coding Assistant */}
                 <div 
                   ref={card2Ref}
-                  className="absolute inset-0 w-full h-full bg-[#07050d] border border-dashed border-white/15 rounded-2xl p-6 flex flex-col justify-between shadow-[0_20px_50px_rgba(0,0,0,0.65)]"
+                  className="absolute inset-0 w-full h-full bg-[#0E0C16] border border-white/10 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.65)] flex flex-col"
                   style={{ 
                     transformStyle: "preserve-3d", 
                     backfaceVisibility: "hidden",
@@ -338,31 +268,55 @@ export default function Projects() {
                     transform: "rotateY(180deg)"
                   }}
                 >
-                  <div className="flex items-center justify-between border-b border-white/5 pb-2.5 select-none">
+                  {/* Mock Browser URL Bar */}
+                  <div className="flex items-center justify-between px-4 py-2.5 bg-[#14121F] border-b border-white/5 select-none font-mono text-[9px] text-dim/80 z-20">
                     <div className="flex items-center gap-2">
-                      <Terminal className="w-3.5 h-3.5 text-[#FFD23F] animate-pulse" />
-                      <span className="font-mono text-[9px] text-dim/80 uppercase tracking-[0.2em]">CYLINDER_PORTAL_02</span>
-                    </div>
-                    <span className="font-mono font-bold text-[10.5px] text-dim uppercase">PROJECT_SLOT_EMPTY</span>
-                  </div>
-                  
-                  <div className="flex-1 w-full bg-void/85 border border-white/5 rounded-lg my-4 p-4 text-left font-mono text-[10.5px] leading-relaxed text-[#FFD23F] overflow-hidden h-[180px]">
-                    {terminalLogs.map((log, idx) => (
-                      <div key={idx} className="whitespace-pre-wrap">{log}</div>
-                    ))}
-                    {activeLog && (
-                      <div className="whitespace-pre-wrap">
-                        {activeLog}
-                        <span className="animate-pulse font-bold text-[#FFD23F]">_</span>
+                      <div className="flex gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#FF5F56]" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#FFBD2E]" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#27C93F]" />
                       </div>
-                    )}
+                      <span className="text-flare font-frozen font-bold uppercase tracking-widest text-sm sm:text-base ml-2">RAIZEN</span>
+                      <span className="text-dim/60 font-mono text-[9px] ml-1">v2.4</span>
+                    </div>
+
+                    {/* Actions links */}
+                    <div className="flex items-center gap-2.5">
+                      <a 
+                        href="https://huggingface.co/shawaz03/RAIZEN" 
+                        target="_blank" 
+                        rel="noreferrer" 
+                        onClick={(e) => e.stopPropagation()}
+                        className="glass-shiny-pill flex items-center gap-2 border border-signal/35 text-white px-3.5 py-1 rounded-md text-[13px] font-mermaid font-bold transition-all duration-300 hover:border-signal/55"
+                        style={{
+                          background: "linear-gradient(135deg, rgba(110, 92, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0) 50.5%, rgba(110, 92, 255, 0.08) 100%)"
+                        }}
+                      >
+                        <ExternalLink className="w-3 h-3 text-[#B5A9FF]" />
+                        <span>Hugging Face</span>
+                      </a>
+                      <a 
+                        href="https://github.com/shawaz03/N-14" 
+                        target="_blank" 
+                        rel="noreferrer" 
+                        onClick={(e) => e.stopPropagation()}
+                        className="hover:text-ink transition-colors duration-200"
+                        aria-label="View RAIZEN (N-14) repository on GitHub"
+                      >
+                        <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+                        </svg>
+                      </a>
+                    </div>
                   </div>
 
-                  <div className="w-full flex items-center justify-between border-t border-white/5 pt-2.5">
-                    <div className="flex items-center gap-2">
-                      <div className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E] animate-pulse" />
-                      <span className="font-mono text-[9px] text-dim/85 uppercase">Developing in workspace...</span>
-                    </div>
+                  {/* RAIZEN Preview Image */}
+                  <div className="flex-1 w-full relative bg-[#1E1E24]">
+                    <img 
+                      src="/raizen.png" 
+                      alt="RAIZEN AI Coding Assistant Preview" 
+                      className="w-full h-full object-cover opacity-80"
+                    />
                   </div>
                 </div>
 
@@ -441,47 +395,47 @@ export default function Projects() {
                 <div className="flex flex-col gap-5 h-full justify-between">
                   <div className="flex flex-col gap-1.5">
                     <span className="font-mono text-[9px] text-[#6E5CFF] tracking-[0.25em] uppercase">
-                      CLASSIFICATION: PIPELINE_NODE
+                      CLASSIFICATION: AI_INTELLIGENCE
                     </span>
                     {/* Title stays Orange (text-flare) */}
                     <h3 className="font-frozen font-bold text-3xl text-flare uppercase tracking-wide">
-                      PROJECT_SLOT_EMPTY
+                      RAIZEN 7.61B
                     </h3>
                   </div>
 
                   {/* Specs Grid */}
                   <div className="grid grid-cols-2 gap-3.5 font-mermaid text-base border border-white/5 bg-void/30 p-3.5 rounded-xl text-white">
                     <div className="flex items-center gap-2">
-                      <Terminal className="w-3.5 h-3.5 text-[#FFD23F]" />
-                      <span>CLASS: UNALLOCATED</span>
+                      <Brain className="w-3.5 h-3.5 text-signal" />
+                      <span>CLASS: AI CODING IDE</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Cpu className="w-3.5 h-3.5 text-[#FFD23F]" />
-                      <span>ENGINE: PLANNING</span>
+                      <Cpu className="w-3.5 h-3.5 text-signal" />
+                      <span>BASE: QWEN 2.5 CODER</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Database className="w-3.5 h-3.5 text-[#FFD23F]" />
-                      <span>STORAGE: GIT</span>
+                      <Database className="w-3.5 h-3.5 text-signal" />
+                      <span>DATA: 15K GOLDEN SET</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Layers className="w-3.5 h-3.5 text-[#FFD23F]" />
-                      <span>STATUS: AWAITING</span>
+                      <Layers className="w-3.5 h-3.5 text-signal" />
+                      <span>NODE: 4× A10G / T4 GPU</span>
                     </div>
                   </div>
 
                   {/* Description copy */}
                   <p className="font-mermaid text-lg text-white leading-relaxed text-justify">
-                    This project slot is currently empty. Awaiting next modular application deployment. Exploring system architectures, API schemas, and interactive user experiences.
+                    An enterprise-grade 7.61B parameter coding foundation model and Swiss-precision developer studio. Fine-tuned from Qwen2.5-Coder-7B over 15,000 multi-turn records on 4× NVIDIA A10G GPUs. Features real-time SSE token streaming, Chat Studio, Model Explorer, and local Snippet Vault.
                   </p>
 
                   {/* Tech stack badges */}
                   <div className="flex flex-wrap gap-1.5">
-                    {["Git", "TypeScript", "GSAP", "Creative Stack"].map((tech) => (
+                    {["PyTorch DDP", "QLoRA", "Hugging Face", "vLLM", "Next.js 14", "FastAPI"].map((tech) => (
                       <span 
                         key={tech}
-                        className="glass-shiny-pill font-mono text-[9.5px] backdrop-blur-[6px] border border-flare/30 text-[#FFB08A] px-2.5 py-1 rounded shadow-[0_4px_12px_rgba(0,0,0,0.15)] transition-all duration-200 hover:border-flare/50"
+                        className="glass-shiny-pill font-mono text-[9.5px] backdrop-blur-[6px] border border-signal/30 text-[#B5A9FF] px-2.5 py-1 rounded shadow-[0_4px_12px_rgba(0,0,0,0.15)] transition-all duration-200 hover:border-signal/50"
                         style={{
-                          background: "linear-gradient(135deg, rgba(255, 122, 69, 0.1) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0) 50.5%, rgba(255, 122, 69, 0.04) 100%)"
+                          background: "linear-gradient(135deg, rgba(110, 92, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0) 50.5%, rgba(110, 92, 255, 0.04) 100%)"
                         }}
                       >
                         {tech}

@@ -470,7 +470,7 @@ export default function Contact() {
 
     // Send real email directly via Nodemailer Gmail SMTP endpoint
     try {
-      await fetch("/api/contact", {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -486,8 +486,16 @@ export default function Contact() {
           transmissionCode: getTransmissionCode(name),
         }),
       });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        console.error("Email dispatch failed:", data?.error, data?.details);
+      } else {
+        console.log("Email dispatch success:", data?.message);
+      }
     } catch (err) {
-      console.log("Email dispatch log:", err);
+      console.error("Email dispatch network error:", err);
     } finally {
       // Ensure terminal finish and transition to success view
       setTimeout(() => {

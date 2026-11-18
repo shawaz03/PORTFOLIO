@@ -29,9 +29,25 @@ This document provides complete technical reference details for J. Shawaz, a Ful
 - **Framer Motion**: Gesture Animations, Layout Animations, AnimatePresence, Scroll-driven Motion.
 - **Lenis**: Smooth scrolling engine integration.
 
-### 3. Backend & Tooling
-- **Node.js / Express**: RESTful API design, server-side data processing, integration with email services (Nodemailer).
-- **Deployment**: Vercel CI/CD deployment, custom domain routing, environment variable management.
+### 4. AI & Machine Learning
+- **Model Fine-Tuning**: PyTorch DDP, FlashAttention-2, QLoRA, Hugging Face Transformers, PEFT, TRL.
+- **Inference Engines & Serving**: vLLM, PagedAttention, FastAPI streaming endpoints (SSE), Google Colab GPU runtimes.
+- **AI Architectures**: Fine-tuning open-source LLMs (Qwen2.5-Coder), dataset curation & validation, ChatML formatting, Chain-of-Thought prompts.
+
+---
+
+## Featured Engineering Projects
+
+### 1. RAIZEN 7.61B — Enterprise AI Coding Intelligence & Studio
+- **Architecture**: 7.61 Billion Parameter coding foundation model fine-tuned from `Qwen2.5-Coder-7B-Instruct` on 4× NVIDIA A10G GPUs (`g5.12xlarge`).
+- **Dataset**: 15,000 curated multi-turn ChatML Golden Dataset records across 5 core pillars (Full-stack architecture, algorithms, security refactoring, multi-file engineering, and chain-of-thought reasoning).
+- **Studio Interface**: Next.js 14 Swiss-precision developer interface featuring real-time SSE token streaming, Chat Studio, Model Explorer, and local Snippet Vault.
+- **Links**: [Hugging Face Model](https://huggingface.co/shawaz03/RAIZEN) | [GitHub Repository](https://github.com/shawaz03/N-14)
+
+### 2. Campus Rides — Student Mobility Platform
+- **Architecture**: Full-stack Next.js and Supabase application connecting campus student riders with drivers.
+- **Features**: Interactive Maplibre GL vector mapping, real-time geolocation tracking, React Query query-cache syncing, and student SOS alerts.
+- **Links**: [Live Application](https://campusrides-nu.vercel.app/) | [GitHub Repository](https://github.com/shawaz03/Campus-rides)
 
 ---
 

@@ -26,6 +26,17 @@ export async function POST(req: Request) {
       },
     });
 
+    // Verify SMTP connection before sending
+    try {
+      await transporter.verify();
+    } catch (verifyError: any) {
+      console.error("SMTP Connection Verification Failed:", verifyError?.message || verifyError);
+      return NextResponse.json(
+        { error: "Email service authentication failed. App Password may be expired or revoked.", details: verifyError?.message },
+        { status: 500 }
+      );
+    }
+
     const budgetRange = `₹${budget}K - ₹${Number(budget) + 5}K INR`;
     const timelineLabel =
       timeline === "fast"
@@ -34,10 +45,10 @@ export async function POST(req: Request) {
         ? "STANDARD (1-3 Mo)"
         : "FLEXIBLE (3+ Mo)";
 
-    // 1. Send Notification Email to Shawaz
+    // 1. Send Notification Email to Shawaz (shawazstar@gmail.com)
     const adminMailOptions = {
       from: `"Shawaz Portfolio Uplink" <${gmailUser}>`,
-      to: gmailUser,
+      to: "shawazstar@gmail.com",
       replyTo: email,
       subject: `🚀 New Project Inquiry from ${name} [${transmissionCode}]`,
       html: `
@@ -119,13 +130,20 @@ export async function POST(req: Request) {
       `,
     };
 
-    // Dispatch both emails in parallel
-    await Promise.all([
-      transporter.sendMail(adminMailOptions),
-      transporter.sendMail(clientMailOptions),
-    ]);
+    // Dispatch both emails sequentially to avoid Gmail rate limits
+    // Send admin notification first, then client confirmation
+    const adminResult = await transporter.sendMail(adminMailOptions);
+    console.log("Admin email sent successfully:", adminResult.messageId);
 
-    return NextResponse.json({ success: true, message: "Emails sent successfully!" });
+    const clientResult = await transporter.sendMail(clientMailOptions);
+    console.log("Client email sent successfully:", clientResult.messageId);
+
+    return NextResponse.json({ 
+      success: true, 
+      message: "Emails sent successfully!",
+      adminMessageId: adminResult.messageId,
+      clientMessageId: clientResult.messageId
+    });
   } catch (error: any) {
     console.error("Nodemailer dispatch error:", error);
     return NextResponse.json(

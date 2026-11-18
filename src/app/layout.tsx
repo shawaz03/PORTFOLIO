@@ -99,6 +99,7 @@ export default function RootLayout({
         image: `${SITE_URL}/profile.jpeg`,
         sameAs: [
           "https://github.com/shawaz03",
+          "https://huggingface.co/shawaz03",
           "https://www.instagram.com/__iamsha_",
           "https://www.linkedin.com/in/shawaz-j-979114302/",
         ],
@@ -108,6 +109,7 @@ export default function RootLayout({
           "Next.js",
           "TypeScript",
           "Full-Stack Development",
+          "AI Fine-Tuning & LLMs",
           "GSAP Animations",
           "Three.js",
           "React Three Fiber",
