@@ -360,51 +360,51 @@ export default function Projects() {
             </button>
           </div>
 
-          {/* RIGHT: Dynamic Dossier Board (Fixed Shape: xl:h-[420px] flex flex-col justify-between) */}
+          {/* RIGHT: Dynamic Dossier Board (Balanced Height matching Carousel: xl:h-[520px]) */}
           <div className="xl:col-span-4 w-full flex flex-col gap-6 justify-center z-20">
             <div 
-              className="w-full border border-white/5 bg-[#0E0C16]/50 rounded-2xl p-7 shadow-xl transition-all duration-500 ease-in-out text-left xl:h-[420px] flex flex-col justify-between"
+              className="w-full border border-white/5 bg-[#0E0C16]/50 rounded-2xl p-6 sm:p-7 shadow-xl transition-all duration-500 ease-in-out text-left min-h-[480px] xl:h-[520px] flex flex-col justify-between"
               style={{ opacity: textOpacity, transform: `translateY(${(1 - textOpacity) * 8}px)` }}
             >
               {activePanel === 1 ? (
-                <div className="flex flex-col gap-5 h-full justify-between">
+                <div className="flex flex-col gap-4 sm:gap-5 h-full justify-between">
                   <div className="flex flex-col gap-1.5">
                     <span className="font-mono text-[9px] text-[#3FE0C5] tracking-[0.25em] uppercase">
                       CLASSIFICATION: RIDE_PLATFORM
                     </span>
                     {/* Title updated to Orange (text-flare) */}
-                    <h3 className="font-frozen font-bold text-3xl text-flare uppercase tracking-wide">
+                    <h3 className="font-frozen font-bold text-2xl sm:text-3xl text-flare uppercase tracking-wide">
                       CAMPUS RIDES
                     </h3>
                   </div>
 
                   {/* Specs Grid */}
-                  <div className="grid grid-cols-2 gap-3.5 font-mermaid text-base border border-white/5 bg-void/30 p-3.5 rounded-xl text-white">
+                  <div className="grid grid-cols-2 gap-2.5 sm:gap-3.5 font-mermaid text-sm sm:text-base border border-white/5 bg-void/30 p-3 sm:p-3.5 rounded-xl text-white">
                     <div className="flex items-center gap-2">
-                      <Terminal className="w-3.5 h-3.5 text-signal" />
-                      <span>CLASS: STUDENT_UTILITY</span>
+                      <Terminal className="w-3.5 h-3.5 text-signal shrink-0" />
+                      <span className="truncate">CLASS: STUDENT_UTILITY</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Cpu className="w-3.5 h-3.5 text-signal" />
-                      <span>ENGINE: FULL-STACK</span>
+                      <Cpu className="w-3.5 h-3.5 text-signal shrink-0" />
+                      <span className="truncate">ENGINE: FULL-STACK</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Database className="w-3.5 h-3.5 text-signal" />
-                      <span>DB: SUPABASE</span>
+                      <Database className="w-3.5 h-3.5 text-signal shrink-0" />
+                      <span className="truncate">DB: SUPABASE</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Layers className="w-3.5 h-3.5 text-signal" />
-                      <span>STATUS: ONLINE</span>
+                      <Layers className="w-3.5 h-3.5 text-signal shrink-0" />
+                      <span className="truncate">STATUS: ONLINE</span>
                     </div>
                   </div>
 
                   {/* Description copy */}
-                  <p className="font-mermaid text-lg text-white leading-relaxed text-justify">
+                  <p className="font-mermaid text-base sm:text-lg text-white/95 leading-relaxed text-justify">
                     A student-focused, doodle-styled ride booking application connecting student riders and drivers. Built with real-time location tracking, interactive Maplibre GL map interfaces, React Query status syncing, and integrated student SOS emergency services.
                   </p>
 
                   {/* Tech stack badges */}
-                  <div className="flex flex-wrap gap-1.5">
+                  <div className="flex flex-wrap gap-1.5 pt-1">
                     {["Next.js", "Supabase", "React Query", "Zustand", "GSAP", "Tailwind"].map((tech) => (
                       <span 
                         key={tech}
@@ -419,44 +419,44 @@ export default function Projects() {
                   </div>
                 </div>
               ) : (
-                <div className="flex flex-col gap-5 h-full justify-between">
+                <div className="flex flex-col gap-4 sm:gap-5 h-full justify-between">
                   <div className="flex flex-col gap-1.5">
                     <span className="font-mono text-[9px] text-[#6E5CFF] tracking-[0.25em] uppercase">
                       CLASSIFICATION: AI_CODING_STUDIO
                     </span>
                     {/* Title stays Orange (text-flare) */}
-                    <h3 className="font-frozen font-bold text-3xl text-flare uppercase tracking-wide">
+                    <h3 className="font-frozen font-bold text-2xl sm:text-3xl text-flare uppercase tracking-wide">
                       RAIZEN STUDIO
                     </h3>
                   </div>
 
                   {/* Specs Grid */}
-                  <div className="grid grid-cols-2 gap-3.5 font-mermaid text-base border border-white/5 bg-void/30 p-3.5 rounded-xl text-white">
+                  <div className="grid grid-cols-2 gap-2.5 sm:gap-3.5 font-mermaid text-sm sm:text-base border border-white/5 bg-void/30 p-3 sm:p-3.5 rounded-xl text-white">
                     <div className="flex items-center gap-2">
-                      <Brain className="w-3.5 h-3.5 text-signal" />
-                      <span>MODEL: FINE-TUNED 7.61B</span>
+                      <Brain className="w-3.5 h-3.5 text-signal shrink-0" />
+                      <span className="truncate">MODEL: FINE-TUNED 7.61B</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Terminal className="w-3.5 h-3.5 text-signal" />
-                      <span>INTERFACE: CHAT STUDIO</span>
+                      <Terminal className="w-3.5 h-3.5 text-signal shrink-0" />
+                      <span className="truncate">INTERFACE: CHAT STUDIO</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Cpu className="w-3.5 h-3.5 text-signal" />
-                      <span>BACKEND: COLAB GPU (T4)</span>
+                      <Cpu className="w-3.5 h-3.5 text-signal shrink-0" />
+                      <span className="truncate">BACKEND: COLAB GPU (T4)</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Layers className="w-3.5 h-3.5 text-signal" />
-                      <span>TUNNEL: HTTP / SSE TUNNEL</span>
+                      <Layers className="w-3.5 h-3.5 text-signal shrink-0" />
+                      <span className="truncate">TUNNEL: HTTP / SSE TUNNEL</span>
                     </div>
                   </div>
 
                   {/* Description copy */}
-                  <p className="font-mermaid text-lg text-white leading-relaxed text-justify">
+                  <p className="font-mermaid text-base sm:text-lg text-white/95 leading-relaxed text-justify">
                     A fine-tuned 7.61B coding foundation model paired with an interactive Next.js chat studio interface. Connected to an on-demand Google Colab GPU runtime via secure HTTP / Cloudflare tunneling with high-throughput real-time SSE token streaming, syntax highlighting, and an integrated Snippet Vault.
                   </p>
 
                   {/* Tech stack badges */}
-                  <div className="flex flex-wrap gap-1.5">
+                  <div className="flex flex-wrap gap-1.5 pt-1">
                     {["Fine-Tuned 7.61B", "Chat Studio", "Colab GPU", "HTTP Tunneling", "SSE Streaming", "Next.js 14"].map((tech) => (
                       <span 
                         key={tech}
